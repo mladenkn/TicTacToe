@@ -1,31 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-const makeStyle = () => ({
-    root: {
-        borderColapse: 'collapse',
-    },
-    cell: {
-        border: '1px solid'
-    }
-})
+const Table = styled.table`
+    borderColapse: collapse;    
+`
 
-export const Board = ({matrix}) => {
+const TableCell = styled.td`
+    border: 1px solid
+`
 
-    const style = makeStyle();
- 
-    return (
-        <table style={style.root}>
-            {matrix.map(row =>(
-                <tr>
-                    {row.map(c => (
-                        <td style={style.cell}>{c}</td>       
-                    ))}
-                </tr>
-            ))}
-        </table>
-    )
-}
+export const Board = ({matrix}) => (
+    <Table>
+        {matrix.map(row => (
+            <tr>
+                {row.map(c => <TableCell>{c}</TableCell>)}
+            </tr>
+        ))}
+    </Table>
+)
 
 Board.propTypes = {
     

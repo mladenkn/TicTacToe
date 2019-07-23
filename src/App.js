@@ -1,5 +1,6 @@
 import React from 'react';
 import Board from './Board';
+import styled from 'styled-components'
 
 const celContent = {
     empty: '',
@@ -15,21 +16,14 @@ const matrix = [
 ]
 
 
-const makeStyle = () => ({
-    root: {
-        padding: 20
-    }
-})
+const Root = styled.div`
+    padding: 30px
+`
 
-const App = () => {
-
-    const style = makeStyle();
-
-    return (
-        <div style={style.root}>
-            <Board matrix={matrix} />
-        </div>
-    )
-}
+const App = () => (
+    <Root>
+        <Board matrix={matrix} />
+    </Root>
+)
 
 export default App;
