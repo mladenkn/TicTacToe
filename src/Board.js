@@ -7,9 +7,10 @@ const Table = styled.table`
 `
 
 const TableCell = styled.td`
-    border: 0.07em solid;
+    border: 0.056em solid;
     text-align: center;
     font-size: 1em;
+    font-weight: lighter;
     width: 1.2em;
     height: 1.2em;
 `
