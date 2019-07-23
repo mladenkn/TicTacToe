@@ -16,21 +16,21 @@ const TableCell = styled.td`
 `
 
 export const Board = ({matrix}) => (
-    <Table>
-        <tbody>
-            {matrix.map((row, rowID) => (
-                <tr key={rowID}>
-                    {row.map((content, cellID) => (
-                        <TableCell key={`${rowID}.${cellID}`}>{content}</TableCell>
-                    ))}
-                </tr>
-            ))}
-        </tbody>
-    </Table>
+  <Table>
+    <tbody>
+      {matrix.map((row, rowID) => (
+        <tr key={rowID}>
+          {row.map((content, cellID) => (
+            <TableCell key={`${rowID}.${cellID}`}>{content}</TableCell>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </Table>
 )
  
 Board.propTypes = {
-    matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
+    matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number))
 }
 
 export default Board;
