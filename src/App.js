@@ -17,12 +17,18 @@ const matrix = [
 
 
 const Root = styled.div`
-    padding: 30px
+    padding: 30px;
+`
+
+const BoardContainer = styled.div`
+    font-size: 2.2em;
 `
 
 const App = () => (
     <Root>
-        <Board matrix={matrix} />
+        <BoardContainer>            
+            <Board matrix={matrix} />
+        </BoardContainer>
     </Root>
 )
 

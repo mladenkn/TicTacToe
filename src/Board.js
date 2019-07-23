@@ -3,25 +3,33 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Table = styled.table`
-    borderColapse: collapse;    
+    border-collapse: collapse;    
 `
 
 const TableCell = styled.td`
-    border: 1px solid
+    border: 0.07em solid;
+    text-align: center;
+    font-size: 1em;
+    width: 1.2em;
+    height: 1.2em;
 `
 
 export const Board = ({matrix}) => (
     <Table>
-        {matrix.map(row => (
-            <tr>
-                {row.map(c => <TableCell>{c}</TableCell>)}
-            </tr>
-        ))}
+        <tbody>
+            {matrix.map((row, rowID) => (
+                <tr key={rowID}>
+                    {row.map((content, cellID) => (
+                        <TableCell key={`${rowID}.${cellID}`}>{content}</TableCell>
+                    ))}
+                </tr>
+            ))}
+        </tbody>
     </Table>
 )
-
+ 
 Board.propTypes = {
-    
+    matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
 }
 
 export default Board;
