@@ -1,4 +1,4 @@
-import { createNullMatrix, allElementsAreEqual } from "../../utils/matrix";
+import { getMatrixDiagonals, createNullMatrix, allElementsAreEqual, getMatrixCollumns } from "../../utils";
 
 const PLAYER_MOVE = 'tic-tac-toe/PLAYER_MOVE';
 const INITIALIZE = 'tic-tac-toe/INITIALIZE';
@@ -6,23 +6,20 @@ const INITIALIZE = 'tic-tac-toe/INITIALIZE';
 export const playerMove = (row, col) => ({ type: PLAYER_MOVE, payload: {row, col} })
 export const initialize = (gameSize, firstPlayer) => ({ type: INITIALIZE, payload: {gameSize, firstPlayer} })
 
-const players = {
+export const players = {
   x: 'X',
   o: 'O',
 }
-
-const finishResult = {
-  draw: 1, xWin: 2, oWin: 3
-}
+const emptyCell = ''
+export const cellContent = { ...players, emptyCell }
 
 export const reducer = (state, action = {}) => {
   switch (action.type) {
 
     case INITIALIZE:
       const {gameSize, firstPlayer} = action.payload;
-      const matrix = createNullMatrix(gameSize);
-      const nextPlayer = firstPlayer;
-      return {matrix, gameSize, nextPlayer};
+      const matrix = createMatrixOf(gameSize, emptyCell);
+      return {matrix, gameSize, nextPlayer: firstPlayer};
     
     case PLAYER_MOVE:
       const {row, col} = action.payload;
@@ -35,10 +32,19 @@ export const reducer = (state, action = {}) => {
   }
 }
 
+
 export const isWin = (matrix) => {
-  for (let curIndex = 0; curIndex < matrix.length; curIndex++) {
-    const row = matrix[curIndex];
-    if(allElementsAreEqual(row))
-      return {isWin: true, winner: row[0]}    
+
+  const allLines = [
+    ...matrix, ...getMatrixCollumns(matrix), ...getMatrixDiagonals(matrix)
+  ]
+
+  const matrixFull = false // TODO
+
+  for (const line of allLines) {
+    if(allElementsAreEqual(line)  &&  line[0] !== emptyCell)
+      return { win: true, winner: line[0], matrixFull }
   }
+  
+  return { win: false, matrixFull }  
 }
