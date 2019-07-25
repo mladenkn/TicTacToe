@@ -2,7 +2,7 @@ import React from 'react';
 import Board from './Board';
 import { cellContent } from '../redux/modules/ticTacToe';
 import styled from 'styled-components';
-import { Typography, Button } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 const decorativeBoardMatrix = [
     [cellContent.x, cellContent.o, cellContent.empty, cellContent.x],
@@ -34,11 +34,7 @@ const Result = styled(Typography)`
   }
 `
 
-const RestartButton = styled(Button)`
-
-`
-
-const GameSection = () => 
+const GameSection = ({matrix}) => 
   <Root>
     <LeftSection>
       <Board matrix={decorativeBoardMatrix} />

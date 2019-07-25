@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Table = styled.table`
   border-collapse: collapse;    
-`
+`;
 
 export const Board = ({matrix}) => (
   <Table>
@@ -35,7 +35,7 @@ const TableCell = styled.td`
   width: 1.2em;
   height: 1.2em;
   color: ${ ({content}) => content === 'X' ? '#c51162' : '#303f9f' }
-`
+`;
 
 const Cell = ({content}) => (
   <TableCell content={content}>
