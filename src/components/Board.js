@@ -3,16 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const Table = styled.table`
-    border-collapse: collapse;    
-`
-
-const TableCell = styled.td`
-    border: 0.056em solid;
-    text-align: center;
-    font-size: 1em;
-    font-weight: lighter;
-    width: 1.2em;
-    height: 1.2em;
+  border-collapse: collapse;    
 `
 
 export const Board = ({matrix}) => (
@@ -21,7 +12,7 @@ export const Board = ({matrix}) => (
       {matrix.map((row, rowID) => (
         <tr key={rowID}>
           {row.map((content, cellID) => (
-            <TableCell key={`${rowID}.${cellID}`}>{content}</TableCell>
+            <Cell key={`${rowID}.${cellID}`} content={content} />
           ))}
         </tr>
       ))}
@@ -35,3 +26,19 @@ Board.propTypes = {
 }
 
 export default Board;
+
+const TableCell = styled.td`
+  border: 0.056em solid green;
+  text-align: center;
+  font-size: 1em;
+  font-weight: lighter;
+  width: 1.2em;
+  height: 1.2em;
+  color: ${ ({content}) => content === 'X' ? 'red' : 'blue' }
+`
+
+const Cell = ({content}) => (
+  <TableCell content={content}>
+    {content}
+  </TableCell>
+)

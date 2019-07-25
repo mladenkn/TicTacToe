@@ -32,7 +32,7 @@ const Result = styled(Typography)`
 `
 
 const RestartButton = styled(Button)`
-  margin-left: -0.6em
+  margin-left: -0.6em;
 `
 
 const GameSection = () => 
