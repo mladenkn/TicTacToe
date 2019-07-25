@@ -1,4 +1,4 @@
-import { cellContent, isWin } from './ticTacToe'
+import { cellContent, isWin } from '../ticTacToe'
 
 describe('isGameover', () => {
 

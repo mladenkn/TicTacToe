@@ -2,12 +2,11 @@ import React from 'react'
 import styled from 'styled-components';
 import { Button, Slider, Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { range } from '../utils/';
 import { useState } from 'react';
 
 const DialogContent = styled.div`
-  padding: 0.7em;
-  width: 14em;
+  padding: 1.1em;
+  width: 14.6em;
 `;
 
 const GameSizePickRow = styled.div`
@@ -42,7 +41,13 @@ const GameSetupMenu = ({onAccept, onCancel}) => {
     <DialogContent>
       <GameSizePickRow>
         <GameSizeHeading gutterBottom variant='h6'>Pick Game Size:</GameSizeHeading>
-        <GameSizeInput valueLabelDisplay="on" onChangeCommitted={(_, v) => setGameSize(v)} value={gameSize} step={1} min={2} max={7} />
+        <GameSizeInput 
+          valueLabelDisplay="on" 
+          onChangeCommitted={(_, v) => setGameSize(v)} 
+          min={2} 
+          max={7} 
+          step={1} 
+        />
       </GameSizePickRow>
       <DialogActions>
         <StyledCancelButton onClick={onCancel} variant='contained' color='secondary'>Cancel</StyledCancelButton>
