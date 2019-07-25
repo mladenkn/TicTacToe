@@ -1,4 +1,5 @@
 import { getMatrixDiagonals, createMatrix, allElementsAreEqual, getMatrixCollumns } from "../../utils";
+import flatten from 'flatten';
 
 const PLAYER_MOVE = 'tic-tac-toe/PLAYER_MOVE';
 const INITIALIZE = 'tic-tac-toe/INITIALIZE';
@@ -41,7 +42,7 @@ export const isWin = (matrix) => {
     ...matrix, ...getMatrixCollumns(matrix), ...getMatrixDiagonals(matrix)
   ]
 
-  const matrixFull = false // TODO
+  const matrixFull = flatten(matrix).every(c => c !== emptyCell)
 
   for (const line of allLines) {
     if(allElementsAreEqual(line)  &&  line[0] !== emptyCell)

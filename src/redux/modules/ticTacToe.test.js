@@ -84,7 +84,7 @@ describe('isGameover', () => {
     const run = (matrix) => {
       const {win, matrixFull} = isWin(matrix)
       expect(win).toBe(false)
-      // expect(matrixFull).toBe(true) // ToDo
+       expect(matrixFull).toBe(true)
     }
 
     run([

@@ -43,7 +43,7 @@ const App = () => {
         <Board matrix={decorativeBoardMatrix} isDecorative />
       </BoardContainer>
       <Menu>
-        <Button color='primary' onClick={() => setDialogOpen(true)}>Play now</Button>
+        <Button color='primary' variant='contained' onClick={() => setDialogOpen(true)}>Play now</Button>
       </Menu>
       <Dialog open={dialogOpen}>
         <GameSetupMenu onAccept={() => setCurrentPage('game')} onCancel={() => setDialogOpen(false)} />
