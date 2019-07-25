@@ -28,13 +28,13 @@ Board.propTypes = {
 export default Board;
 
 const TableCell = styled.td`
-  border: 0.056em solid green;
+  border: 0.04em solid black;
   text-align: center;
   font-size: 1em;
   font-weight: lighter;
   width: 1.2em;
   height: 1.2em;
-  color: ${ ({content}) => content === 'X' ? 'red' : 'blue' }
+  color: ${ ({content}) => content === 'X' ? '#c51162' : '#303f9f' }
 `
 
 const Cell = ({content}) => (

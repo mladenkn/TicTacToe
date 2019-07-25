@@ -28,11 +28,14 @@ const Results = styled.div`
 `
 
 const Result = styled(Typography)`
-
+  && {
+    font-size: 0.9em;
+    margin-bottom: 0.5em;
+  }
 `
 
 const RestartButton = styled(Button)`
-  margin-left: -0.6em;
+
 `
 
 const GameSection = () => 
@@ -45,7 +48,6 @@ const GameSection = () =>
         <Result>X wins: 2</Result>
         <Result>O wins: 1</Result>
         <Result>Draw: 3</Result>
-        <RestartButton color='primary'>Restart</RestartButton>
       </Results>
     </RightSection>
   </Root>

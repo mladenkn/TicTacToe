@@ -45,7 +45,7 @@ const GameSetupMenu = ({onAccept, onCancel}) => {
         <GameSizeInput valueLabelDisplay="on" onChangeCommitted={(_, v) => setGameSize(v)} value={gameSize} step={1} min={2} max={7} />
       </GameSizePickRow>
       <DialogActions>
-        <StyledCancelButton onClick={() => onCancel()} variant='contained' color='secondary'>Cancel</StyledCancelButton>
+        <StyledCancelButton onClick={onCancel} variant='contained' color='secondary'>Cancel</StyledCancelButton>
         <StyledOKButton onClick={() => onAccept({gameSize})} variant='contained' color='primary'>OK</StyledOKButton>
       </DialogActions>
     </DialogContent>
