@@ -31,7 +31,7 @@ const BoardContainer = styled.div`
 `;
 
 const App = () => {
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(true);
   const [currentPage, setCurrentPage] = useState('setup');
  
   const setupPage = (
