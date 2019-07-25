@@ -4,7 +4,7 @@ const NEW_ROUND = 'tic-tac-toe-round-history/NEW_ROUND';
 
 export const newRound = () => ({ type: NEW_ROUND })
 
-export default (state = [], action = {}) => {
+export const reducer = (state = [], action = {}) => {
 
   switch (action.type) {
 

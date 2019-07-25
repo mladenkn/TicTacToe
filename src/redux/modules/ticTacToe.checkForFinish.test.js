@@ -1,4 +1,4 @@
-import { cellContent, checkForFinish } from '../ticTacToe'
+import { cellContent, checkForFinish } from './ticTacToe';
 
 describe('isGameover', () => {
 

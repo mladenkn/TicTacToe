@@ -1,4 +1,4 @@
-import { getMatrixDiagonals, createMatrix, allElementsAreEqual, getMatrixCollumns } from "../../utils";
+import { getMatrixDiagonals, updateMatrixCell, createMatrix, allElementsAreEqual, getMatrixCollumns } from "../../utils";
 import flatten from 'flatten';
 
 const PLAYER_MOVE = 'tic-tac-toe/PLAYER_MOVE';
@@ -16,13 +16,9 @@ export const players = {
 const emptyCell = ''
 export const cellContent = { ...players, emptyCell }
 
-export const middleware = store => next => action => {
-  const moduleState = store.state.ticTacToe;
-
-  if(moduleState.isFinish)
-    store.dispatch(finish(moduleState));
-  
-  return next(action);
+export const middleware = (state, _, dispatch) => {
+  if(state.isFinish)
+    dispatch(finish(state));
 }
 
 export const reducer = (state = {}, action = {}) => {
@@ -43,9 +39,6 @@ export const reducer = (state = {}, action = {}) => {
       return state;
   }
 }
-
-export default reducer;
-
 
 export const checkForFinish = (matrix) => {
 

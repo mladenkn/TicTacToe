@@ -1,16 +1,18 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { createLogger } from 'redux-logger'
-import ticTacToe from './modules/ticTacToe'
-import game from './modules/ticTacToe'
+import { createLogger } from 'redux-logger';
+import * as ticTacToe from './modules/ticTacToe';
+import * as ticTacToeRoundHistory from './modules/ticTacToeRoundHistory';
+import {createMiddleware} from '../utils/redux';
 
-const loggerMiddleware = createLogger(); // initialize logger
-
-const createStoreWithMiddleware = applyMiddleware(loggerMiddleware)(createStore); // apply logger to redux
+const createStoreWithMiddleware = applyMiddleware(
+  createLogger(),
+  createMiddleware('ticTacToe', ticTacToe.middleware),
+)(createStore);
 
 const reducer = combineReducers({
-  game,
-  ticTacToe,
+  ticTacToeRoundHistory: ticTacToeRoundHistory.reducer,
+  ticTacToe: ticTacToe.reducer,
 });
 
 const configureStore = (initialState) => createStoreWithMiddleware(reducer, initialState);
-export default configureStore; 
+export default configureStore;  
