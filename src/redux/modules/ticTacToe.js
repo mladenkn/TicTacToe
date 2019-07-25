@@ -13,7 +13,7 @@ const players = {
 const emptyCell = ''
 export const cellContent = { ...players, emptyCell }
 
-export const reducer = (state, action = {}) => {
+export const reducer = (state = {}, action = {}) => {
   switch (action.type) {
 
     case INITIALIZE:
@@ -31,6 +31,8 @@ export const reducer = (state, action = {}) => {
       return state;
   }
 }
+
+export default reducer;
 
 
 export const isWin = (matrix) => {

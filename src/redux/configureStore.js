@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import createLogger from 'redux-logger';
+import { createLogger } from 'redux-logger'
 import ticTacToe from './modules/ticTacToe'
 
 const loggerMiddleware = createLogger(); // initialize logger
@@ -11,4 +11,4 @@ const reducer = combineReducers({
 });
 
 const configureStore = (initialState) => createStoreWithMiddleware(reducer, initialState);
-export default configureStore;
+export default configureStore; 
