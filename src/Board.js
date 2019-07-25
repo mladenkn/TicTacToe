@@ -30,7 +30,7 @@ export const Board = ({matrix}) => (
 )
  
 Board.propTypes = {
-    matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number))
+    matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
 }
 
 export default Board;

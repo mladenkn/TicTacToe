@@ -1,4 +1,4 @@
-import { getMatrixDiagonals, createNullMatrix, allElementsAreEqual, getMatrixCollumns } from "../../utils";
+import { getMatrixDiagonals, createMatrixOf, allElementsAreEqual, getMatrixCollumns } from "../../utils";
 
 const PLAYER_MOVE = 'tic-tac-toe/PLAYER_MOVE';
 const INITIALIZE = 'tic-tac-toe/INITIALIZE';
@@ -6,7 +6,7 @@ const INITIALIZE = 'tic-tac-toe/INITIALIZE';
 export const playerMove = (row, col) => ({ type: PLAYER_MOVE, payload: {row, col} })
 export const initialize = (gameSize, firstPlayer) => ({ type: INITIALIZE, payload: {gameSize, firstPlayer} })
 
-export const players = {
+const players = {
   x: 'X',
   o: 'O',
 }

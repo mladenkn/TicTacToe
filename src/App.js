@@ -1,18 +1,13 @@
 import React from 'react';
 import Board from './Board';
-import styled from 'styled-components'
-
-const celContent = {
-    empty: '',
-    X: 'X',
-    O: 'O'
-}
+import styled from 'styled-components';
+import { cellContent } from './redux/modules/ticTacToe';
 
 const matrix = [
-    [celContent.X, celContent.O, celContent.empty, celContent.X],
-    [celContent.X, celContent.X, celContent.O, celContent.empty],
-    [celContent.O, celContent.empty, celContent.X, celContent.O],
-    [celContent.empty, celContent.empty, celContent.X, celContent.O],
+    [cellContent.x, cellContent.o, cellContent.empty, cellContent.x],
+    [cellContent.x, cellContent.x, cellContent.o, cellContent.empty],
+    [cellContent.o, cellContent.empty, cellContent.x, cellContent.o],
+    [cellContent.empty, cellContent.empty, cellContent.x, cellContent.o],
 ]
 
 
@@ -26,9 +21,9 @@ const BoardContainer = styled.div`
 
 const App = () => (
     <Root>
-        <BoardContainer>            
-            <Board matrix={matrix} />
-        </BoardContainer>
+      <BoardContainer>            
+          <Board matrix={matrix} />
+      </BoardContainer>
     </Root>
 )
 
