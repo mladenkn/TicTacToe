@@ -42,6 +42,7 @@ const GameSetupMenu = ({onAccept, onCancel}) => {
       <GameSizePickRow>
         <GameSizeHeading gutterBottom variant='h6'>Pick Game Size:</GameSizeHeading>
         <GameSizeInput 
+          value={gameSize}
           valueLabelDisplay="on" 
           onChangeCommitted={(_, v) => setGameSize(v)} 
           min={2} 

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger'
 import ticTacToe from './modules/ticTacToe'
-import game from './modules/game'
+import game from './modules/ticTacToe'
 
 const loggerMiddleware = createLogger(); // initialize logger
 
