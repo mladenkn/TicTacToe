@@ -7,9 +7,9 @@ describe('isGameover', () => {
   test('still playing', () => {
     
     const run = (matrix) => {
-      const {win, matrixFull} = isFinish(matrix)
-      expect(win).toBe(false)
-      expect(matrixFull).toBe(false)
+      const {isWin, isMatrixFull} = isFinish(matrix)
+      expect(isWin).toBe(false)
+      expect(isMatrixFull).toBe(false)
     }
     
     run([
@@ -25,13 +25,13 @@ describe('isGameover', () => {
     ]);
   })
 
-  test('x win', () => {
+  test('x isWin', () => {
     
     const run = (matrix) => {
-      const {win, matrixFull, winner} = isFinish(matrix)
-      expect(win).toBe(true)
-      expect(winner).toBe(x)
-      expect(matrixFull).toBe(false)
+      const {isWin, isMatrixFull, isWinner} = isFinish(matrix)
+      expect(isWin).toBe(true)
+      expect(isWinner).toBe(x)
+      expect(isMatrixFull).toBe(false)
     }
 
     run([
@@ -52,13 +52,13 @@ describe('isGameover', () => {
     ]);
   })
 
-  test('o win', () => {
+  test('o isWin', () => {
     
     const run = (matrix) => {
-      const {win, matrixFull, winner} = isFinish(matrix)
-      expect(win).toBe(true)
-      expect(winner).toBe(o)
-      expect(matrixFull).toBe(false)
+      const {isWin, isMatrixFull, isWinner} = isFinish(matrix)
+      expect(isWin).toBe(true)
+      expect(isWinner).toBe(o)
+      expect(isMatrixFull).toBe(false)
     }
 
     run([
@@ -79,12 +79,12 @@ describe('isGameover', () => {
     ]);
   })
 
-  test('no win, matrix full', () => {
+  test('no isWin, matrix full', () => {
     
     const run = (matrix) => {
-      const {win, matrixFull} = isFinish(matrix)
-      expect(win).toBe(false)
-       expect(matrixFull).toBe(true)
+      const {isWin, isMatrixFull} = isFinish(matrix)
+      expect(isWin).toBe(false)
+       expect(isMatrixFull).toBe(true)
     }
 
     run([

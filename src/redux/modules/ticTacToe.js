@@ -19,9 +19,9 @@ export const cellContent = { ...players, emptyCell }
 export const middleware = store => next => action => {
   const moduleState = store.state.ticTacToe;
 
-  if(moduleState.isFinish.win)
+  if(moduleState.isFinish.isWin)
     store.dispatch(finish(moduleState));
-  else if(moduleState.isFinish.matrixFull)
+  else if(moduleState.isFinish.isMatrixFull)
     store.dispatch(finish(moduleState));
   
   return next(action);
@@ -55,12 +55,12 @@ export const isFinish = (matrix) => {
     ...matrix, ...getMatrixCollumns(matrix), ...getMatrixDiagonals(matrix)
   ]
 
-  const matrixFull = flatten(matrix).every(c => c !== emptyCell)
+  const isMatrixFull = flatten(matrix).every(c => c !== emptyCell)
 
   for (const line of allLines) {
     if(allElementsAreEqual(line)  &&  line[0] !== emptyCell)
-      return { win: true, winner: line[0], matrixFull }
+      return { isWin: true, isWinner: line[0], isMatrixFull }
   }
   
-  return { win: false, matrixFull }  
+  return { isWin: false, isMatrixFull }  
 }
