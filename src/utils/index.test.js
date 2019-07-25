@@ -1,4 +1,4 @@
-import { createMatrix, getMatrixCollumns, getMatrixDiagonals } from ".";
+import { createMatrix, getMatrixCollumns, getMatrixDiagonals, updateMatrixCell } from ".";
 
 test('createNullMatrix', () => {
   const run = (width, height) => {
@@ -23,7 +23,7 @@ describe('getMatrixCollumns', () => {
     expect(cols[0].every(e => e === 1)).toBe(true);
     expect(cols[1].every(e => e === 2)).toBe(true);
     expect(cols[2].every(e => e === 3)).toBe(true);
-  })
+  });
 })
 
 test('getMatrixDiagonals', () => {
@@ -31,14 +31,21 @@ test('getMatrixDiagonals', () => {
     [1, 0, 4],
     [0, 2, 0],
     [5, 0, 3],
-  ]
-  const [d1, d2] = getMatrixDiagonals(matrix)
- 
-  expect(d1[0]).toBe(1)
-  expect(d1[1]).toBe(2)
-  expect(d1[2]).toBe(3)
+  ];
+  const [d1, d2] = getMatrixDiagonals(matrix);
+  expect(d1).toEqual([1, 2, 3]);
+  expect(d2).toEqual([5, 2, 4]);
+});
 
-  expect(d2[0]).toBe(5)
-  expect(d2[1]).toBe(2)
-  expect(d2[2]).toBe(4)
-})
+test('update matrix cell', () => {
+  const matrix = [
+    [1, 0, 4],
+    [0, 2, 0],
+    [5, 0, 3],
+  ];
+  const newValue = 10;
+  const updatedMatrix = updateMatrixCell(matrix, {x: 1, y: 1}, newValue);
+  expect(updatedMatrix[0]).toEqual([1, 0, 4]);
+  expect(updatedMatrix[1]).toEqual([0, newValue, 0]);
+  expect(updatedMatrix[2]).toEqual([5, 0, 3]);
+}); 

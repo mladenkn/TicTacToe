@@ -29,10 +29,10 @@ describe('isGameover', () => {
   test('x isWin', () => {
     
     const run = (matrix) => {
-      const {isWin, isMatrixFull, isWinner, isFinish} = checkForFinish(matrix)
+      const {isWin, isMatrixFull, winner, isFinish} = checkForFinish(matrix)
       expect(isFinish).toBe(true)
       expect(isWin).toBe(true)
-      expect(isWinner).toBe(x)
+      expect(winner).toBe(x)
       expect(isMatrixFull).toBe(false)
     }
 
@@ -57,10 +57,10 @@ describe('isGameover', () => {
   test('o isWin', () => {
     
     const run = (matrix) => {
-      const {isWin, isMatrixFull, isWinner, isFinish} = checkForFinish(matrix)
+      const {isWin, isMatrixFull, winner, isFinish} = checkForFinish(matrix)
       expect(isFinish).toBe(true)
       expect(isWin).toBe(true)
-      expect(isWinner).toBe(o)
+      expect(winner).toBe(o)
       expect(isMatrixFull).toBe(false)
     }
 

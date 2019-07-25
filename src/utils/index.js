@@ -1,3 +1,5 @@
+import {update} from "ramda";
+
 export const createMatrix = (width, height, value) => {
   const r = [];
   for (let curIndex = 0;  curIndex < height;  curIndex++)
@@ -33,3 +35,11 @@ export const getMatrixDiagonals = (matrix) => {
     diag2.push(matrix[rowIndex][colIndex])
   return [diag1, diag2]
 }
+
+export const updateMatrixCell = (matrix, pos, value) =>
+  matrix.map((row, index) => {
+    if (index === pos.x)
+      return update(pos.y, value, row);
+    else
+      return row;
+  })

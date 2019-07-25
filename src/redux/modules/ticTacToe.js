@@ -35,9 +35,9 @@ export const reducer = (state = {}, action = {}) => {
     
     case PLAYER_MOVE:
       const {row, col} = action.payload;
-      matrix[row][col] = state.nextPlayer;
+      const updatedMatrix = updateMatrixCell(matrix, {x: row, y: col}, state.nextPlayer);
       const nextPlayer = state.nextPlayer === players.x ? players.o : players.x;
-      return { ...state, matrix, nextPlayer, ...checkForFinish(matrix) };
+      return { ...state, matrix: updatedMatrix, nextPlayer, ...checkForFinish(matrix) };
       
     default: 
       return state;
@@ -57,7 +57,7 @@ export const checkForFinish = (matrix) => {
 
   for (const line of allLines) {
     if(allElementsAreEqual(line)  &&  line[0] !== emptyCell)
-      return { isFinish: true, isWin: true, isWinner: line[0], isMatrixFull }
+      return { isFinish: true, isWin: true, winner: line[0], isMatrixFull }
   }
   
   return { isWin: false, isFinish: isMatrixFull, isMatrixFull }  
