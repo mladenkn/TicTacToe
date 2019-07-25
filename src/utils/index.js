@@ -1,4 +1,4 @@
-export const createMatrixOf = (width, height, value) => {
+export const createMatrix = (width, height, value) => {
   const r = [];
   for (let curIndex = 0;  curIndex < height;  curIndex++)
     r.push(Array(width).fill(value));

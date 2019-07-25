@@ -1,4 +1,4 @@
-import { getMatrixDiagonals, createMatrixOf, allElementsAreEqual, getMatrixCollumns } from "../../utils";
+import { getMatrixDiagonals, createMatrix, allElementsAreEqual, getMatrixCollumns } from "../../utils";
 
 const PLAYER_MOVE = 'tic-tac-toe/PLAYER_MOVE';
 const INITIALIZE = 'tic-tac-toe/INITIALIZE';
@@ -18,7 +18,7 @@ export const reducer = (state = {}, action = {}) => {
 
     case INITIALIZE:
       const {gameSize, firstPlayer} = action.payload;
-      const matrix = createMatrixOf(gameSize, emptyCell);
+      const matrix = createMatrix(gameSize, emptyCell);
       return {matrix, gameSize, nextPlayer: firstPlayer};
     
     case PLAYER_MOVE:

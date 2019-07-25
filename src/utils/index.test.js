@@ -1,8 +1,8 @@
-import { createMatrixOf, getMatrixCollumns, getMatrixDiagonals } from ".";
+import { createMatrix, getMatrixCollumns, getMatrixDiagonals } from ".";
 
 test('createNullMatrix', () => {
   const run = (width, height) => {
-    const matrix = createMatrixOf(width, height, null);
+    const matrix = createMatrix(width, height, null);
     expect(matrix.length).toBe(height);
     expect(matrix[1].length).toBe(width);
   }
