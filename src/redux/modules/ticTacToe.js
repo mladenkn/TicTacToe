@@ -19,9 +19,7 @@ export const cellContent = { ...players, emptyCell }
 export const middleware = store => next => action => {
   const moduleState = store.state.ticTacToe;
 
-  if(moduleState.isFinish.isWin)
-    store.dispatch(finish(moduleState));
-  else if(moduleState.isFinish.isMatrixFull)
+  if(moduleState.isFinish)
     store.dispatch(finish(moduleState));
   
   return next(action);
@@ -39,7 +37,7 @@ export const reducer = (state = {}, action = {}) => {
       const {row, col} = action.payload;
       matrix[row][col] = state.nextPlayer;
       const nextPlayer = state.nextPlayer === players.x ? players.o : players.x;
-      return { ...state, matrix, nextPlayer, ...isFinish(matrix) };
+      return { ...state, matrix, nextPlayer, ...checkForFinish(matrix) };
       
     default: 
       return state;
@@ -49,7 +47,7 @@ export const reducer = (state = {}, action = {}) => {
 export default reducer;
 
 
-export const isFinish = (matrix) => {
+export const checkForFinish = (matrix) => {
 
   const allLines = [
     ...matrix, ...getMatrixCollumns(matrix), ...getMatrixDiagonals(matrix)
@@ -59,8 +57,8 @@ export const isFinish = (matrix) => {
 
   for (const line of allLines) {
     if(allElementsAreEqual(line)  &&  line[0] !== emptyCell)
-      return { isWin: true, isWinner: line[0], isMatrixFull }
+      return { isFinish: true, isWin: true, isWinner: line[0], isMatrixFull }
   }
   
-  return { isWin: false, isMatrixFull }  
+  return { isWin: false, isFinish: isMatrixFull, isMatrixFull }  
 }
