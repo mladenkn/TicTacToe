@@ -28,9 +28,10 @@ export const Board = ({matrix}) => (
     </tbody>
   </Table>
 )
- 
+
 Board.propTypes = {
-    matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string))
+    matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+    isDecorative: PropTypes.bool
 }
 
 export default Board;
