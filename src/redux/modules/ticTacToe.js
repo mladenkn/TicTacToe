@@ -26,8 +26,8 @@ export const reducer = (state = {}, action = {}) => {
 
     case INITIALIZE:
       const {gameSize, firstPlayer} = action.payload;
-      const matrix = createMatrix(gameSize, emptyCell);
-      return {matrix, gameSize, nextPlayer: firstPlayer};
+      const matrix = createMatrix(gameSize, gameSize, emptyCell);
+      return {matrix, gameSize, initialized: true, nextPlayer: firstPlayer};
     
     case PLAYER_MOVE:
       const {row, col} = action.payload;

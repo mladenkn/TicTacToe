@@ -37,7 +37,7 @@ const Result = styled(Typography)`
 const GameSection = ({matrix}) => 
   <Root>
     <LeftSection>
-      <Board matrix={decorativeBoardMatrix} />
+      <Board matrix={matrix} />
     </LeftSection>
     <RightSection>
       <Results>
