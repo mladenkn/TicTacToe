@@ -3,11 +3,11 @@ import flatten from 'flatten';
 
 const PLAYER_MOVE = 'tic-tac-toe/PLAYER_MOVE';
 const INITIALIZE = 'tic-tac-toe/INITIALIZE';
-export const FINISH = 'tic-tac-toe/FINISH';
+export const GAME_OVER = 'tic-tac-toe/FINISH';
 
-export const playerMove = (row, col) => ({ type: PLAYER_MOVE, payload: {row, col} });
 export const initialize = (gameSize, firstPlayer) => ({ type: INITIALIZE, payload: {gameSize, firstPlayer} });
-export const finish = (state) => ({ type: INITIALIZE, payload: state });
+export const playerMove = (row, col) => ({ type: PLAYER_MOVE, payload: {row, col} });
+export const gameOver = (state) => ({ type: GAME_OVER, payload: state });
 
 export const players = {
   x: 'X',
@@ -18,7 +18,7 @@ export const cellContent = { ...players, emptyCell }
 
 export const middleware = (state, _, dispatch) => {
   if(state.isGameOver)
-    dispatch(finish(state));
+    dispatch(gameOver(state));
 }
 
 export const reducer = (state = {}, action = {}) => {

@@ -6,25 +6,25 @@ import PropTypes from 'prop-types';
 import { selectResultHistory } from '../redux/modules/ticTacToeRoundHistory';
 
 export const GameSectionContainer = connect(
-  state => ({state: state.ticTacToe}), dispatch => ({dispatch})
+  state => ({state: state}), dispatch => ({dispatch})
 )(({gameSize, state, dispatch}) => {
   useEffect(() => {
-    if(!state.initialized)
+    if(!state.ticTacToe.initialized)
       dispatch(initialize(gameSize, players.x));
   });
-  const resultHistory = selectResultHistory(state.ticTacToeRoundHistory || []);
-  return state.initialized ?
+  const resultHistory = selectResultHistory(state.ticTacToeRoundHistory);
+  return state.ticTacToe.initialized ?
     <GameSectionPresenter 
-      nextPlayer={state.nextPlayer} 
+      nextPlayer={state.ticTacToe.nextPlayer} 
       onCellClick={({row, col}) => dispatch(playerMove(row, col))} 
-      matrix={state.matrix} 
+      matrix={state.ticTacToe.matrix} 
       resultHistory={resultHistory} 
     /> :
     <div />
-})
+});
 
 GameSectionContainer.propTypes = {
   gameSize: PropTypes.number
-}
+};
 
 export default GameSectionContainer;

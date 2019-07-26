@@ -1,4 +1,4 @@
-import { FINISH as ROUND_FINISH, players } from './ticTacToe'
+import { GAME_OVER, players } from './ticTacToe'
 
 const NEW_ROUND = 'tic-tac-toe-round-history/NEW_ROUND';
 
@@ -8,7 +8,7 @@ export const reducer = (state = [], action = {}) => {
 
   switch (action.type) {
 
-    case ROUND_FINISH: 
+    case GAME_OVER: 
       const roundState = action.payload;
       return [...state, roundState];
     
