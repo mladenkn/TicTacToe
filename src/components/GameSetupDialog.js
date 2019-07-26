@@ -33,7 +33,7 @@ const DialogActions = styled.div`
   width: 12em;
 `
 
-const GameSetupMenu = ({onAccept, onCancel}) => {
+const GameSetupDialog = ({onAccept, onCancel}) => {
 
   const [gameSize, setGameSize] = useState(3)
 
@@ -58,9 +58,9 @@ const GameSetupMenu = ({onAccept, onCancel}) => {
   );
 };
 
-GameSetupMenu.propTypes = {
+GameSetupDialog.propTypes = {
   onAccept: PropTypes.func,
   onCancel: PropTypes.func
 }
 
-export default GameSetupMenu;
+export default GameSetupDialog;

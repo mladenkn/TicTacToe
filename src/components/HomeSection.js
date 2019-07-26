@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Board from './Board';
 import { Button, Dialog } from '@material-ui/core';
-import GameSetupMenu from './GameSetupMenu'
+import GameSetupDialog from './GameSetupDialog'
 import { cellContent } from '../redux/modules/ticTacToe';
 
 const decorativeBoardMatrix = [
@@ -36,7 +36,7 @@ const HomeSection = ({navigateToGame}) => {
         <Button color='primary' variant='contained' onClick={() => setDialogOpen(true)}>Play now</Button>
       </Menu>
       <Dialog open={dialogOpen}>
-        <GameSetupMenu onAccept={navigateToGame} onCancel={() => setDialogOpen(false)} />
+        <GameSetupDialog onAccept={navigateToGame} onCancel={() => setDialogOpen(false)} />
       </Dialog>
     </SetuPageRoot>
     )

@@ -8,14 +8,12 @@ const AnyPageRoot = styled.div`
 `;
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('setup');
+  const [gameSize, setGameSize] = useState(null);
 
-  switch(currentPage){
-    case 'setup':
-      return <AnyPageRoot><HomeSection navigateToGame={() => setCurrentPage('game')} /></AnyPageRoot>
-    case 'game':
-      return <AnyPageRoot><GameSection gameSize={3} /></AnyPageRoot>;
-  }
+  if (gameSize)
+    return <AnyPageRoot><GameSection gameSize={3} /></AnyPageRoot>;
+  else
+    return <AnyPageRoot><HomeSection navigateToGame={setGameSize} /></AnyPageRoot>
 }
 
 export default App;
