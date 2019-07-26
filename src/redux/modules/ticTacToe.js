@@ -17,7 +17,7 @@ const emptyCell = ''
 export const cellContent = { ...players, emptyCell }
 
 export const middleware = (state, _, dispatch) => {
-  if(state.isFinish)
+  if(state.isGameOver)
     dispatch(finish(state));
 }
 
@@ -33,14 +33,14 @@ export const reducer = (state = {}, action = {}) => {
       const {row, col} = action.payload;
       const updatedMatrix = updateMatrixCell(state.matrix, {x: row, y: col}, state.nextPlayer);
       const nextPlayer = state.nextPlayer === players.x ? players.o : players.x;
-      return { ...state, matrix: updatedMatrix, nextPlayer, ...checkForFinish(updatedMatrix) };
+      return { ...state, matrix: updatedMatrix, nextPlayer, ...checkForGameOver(updatedMatrix) };
       
     default: 
       return state;
   }
 }
 
-export const checkForFinish = (matrix) => {
+export const checkForGameOver = (matrix) => {
 
   const allLines = [
     ...matrix, ...getMatrixCollumns(matrix), ...getMatrixDiagonals(matrix)
@@ -50,8 +50,8 @@ export const checkForFinish = (matrix) => {
 
   for (const line of allLines) {
     if(allElementsAreEqual(line)  &&  line[0] !== emptyCell)
-      return { isFinish: true, isWin: true, winner: line[0], isMatrixFull }
+      return { isGameOver: true, isWin: true, winner: line[0], isMatrixFull }
   }
   
-  return { isWin: false, isFinish: isMatrixFull, isMatrixFull }  
+  return { isWin: false, isGameOver: isMatrixFull, isMatrixFull }  
 }

@@ -1,4 +1,4 @@
-import { cellContent, checkForFinish } from './ticTacToe';
+import { cellContent, checkForGameOver } from './ticTacToe';
 
 describe('isGameover', () => {
 
@@ -7,8 +7,8 @@ describe('isGameover', () => {
   test('still playing', () => {
     
     const run = (matrix) => {
-      const {isWin, isMatrixFull, isFinish} = checkForFinish(matrix)
-      expect(isFinish).toBe(false)
+      const {isWin, isMatrixFull, isGameOver} = checkForGameOver(matrix)
+      expect(isGameOver).toBe(false)
       expect(isWin).toBe(false)
       expect(isMatrixFull).toBe(false)
     }
@@ -29,8 +29,8 @@ describe('isGameover', () => {
   test('x isWin', () => {
     
     const run = (matrix) => {
-      const {isWin, isMatrixFull, winner, isFinish} = checkForFinish(matrix)
-      expect(isFinish).toBe(true)
+      const {isWin, isMatrixFull, winner, isGameOver} = checkForGameOver(matrix)
+      expect(isGameOver).toBe(true)
       expect(isWin).toBe(true)
       expect(winner).toBe(x)
       expect(isMatrixFull).toBe(false)
@@ -57,8 +57,8 @@ describe('isGameover', () => {
   test('o isWin', () => {
     
     const run = (matrix) => {
-      const {isWin, isMatrixFull, winner, isFinish} = checkForFinish(matrix)
-      expect(isFinish).toBe(true)
+      const {isWin, isMatrixFull, winner, isGameOver} = checkForGameOver(matrix)
+      expect(isGameOver).toBe(true)
       expect(isWin).toBe(true)
       expect(winner).toBe(o)
       expect(isMatrixFull).toBe(false)
@@ -85,8 +85,8 @@ describe('isGameover', () => {
   test('no isWin, matrix full', () => {
     
     const run = (matrix) => {
-      const {isWin, isMatrixFull, isFinish} = checkForFinish(matrix)
-      expect(isFinish).toBe(true)
+      const {isWin, isMatrixFull, isGameOver} = checkForGameOver(matrix)
+      expect(isGameOver).toBe(true)
       expect(isWin).toBe(false)
       expect(isMatrixFull).toBe(true)
     }
