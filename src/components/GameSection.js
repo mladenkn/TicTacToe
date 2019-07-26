@@ -1,15 +1,8 @@
 import React from 'react';
 import Board from './Board';
-import { cellContent } from '../redux/modules/ticTacToe';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
-
-const decorativeBoardMatrix = [
-    [cellContent.x, cellContent.o, cellContent.empty, cellContent.x],
-    [cellContent.x, cellContent.empty, cellContent.o, cellContent.empty],
-    [cellContent.o, cellContent.empty, cellContent.empty, cellContent.o],
-    [cellContent.empty, cellContent.empty, cellContent.x, cellContent.o],
-];
 
 const LeftSection = styled.div`
   font-size: 2.2em;
@@ -25,27 +18,48 @@ const RightSection = styled.div`
 
 const Results = styled.div`
 
-`
+`;
 
 const Result = styled(Typography)`
   && {
     font-size: 0.9em;
     margin-bottom: 0.5em;
   }
-`
+`;
 
-const GameSection = ({matrix}) => 
+const NextPlayer = styled(Typography)`
+  && {
+    font-size: 0.9em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+`;
+
+const GameSection = ({matrix, resultHistory, onCellClick, nextPlayer}) => (
   <Root>
     <LeftSection>
-      <Board matrix={matrix} />
+      <Board onCellClick={onCellClick} matrix={matrix} />
     </LeftSection>
     <RightSection>
       <Results>
-        <Result>X wins: 2</Result>
-        <Result>O wins: 1</Result>
-        <Result>Draw: 3</Result>
+        <Result>X wins: {resultHistory.xWins}</Result>
+        <Result>O wins: {resultHistory.oWins}</Result>
+        <Result>Draws: {resultHistory.draws}</Result>
+        <NextPlayer>Next player: {nextPlayer}</NextPlayer>
       </Results>
     </RightSection>
   </Root>
+);
+
+GameSection.propTypes = {
+  matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  resultHistory: PropTypes.shape({
+    xWins: PropTypes.number,
+    oWins: PropTypes.number,
+    draws: PropTypes.number,
+  }),
+  onCellClick: PropTypes.func,
+  nextPlayer: PropTypes.string,
+}
 
 export default GameSection;

@@ -16,12 +16,12 @@ export const reducer = (state = [], action = {}) => {
   }
 }
 
-export const selectRoundFinishes = (history) => {
+export const selectResultHistory = (stateHistory) => {
   let xWinCount = 0;
   let oWinCount = 0;
   let drawCount = 0;
 
-  history.forEach(s => {
+  stateHistory.forEach(s => {
     if(s.winner === players.x)
       xWinCount++;
     else if(s.winner === players.o)

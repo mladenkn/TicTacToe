@@ -6,13 +6,18 @@ const Table = styled.table`
   border-collapse: collapse;    
 `;
 
-export const Board = ({matrix}) => (
+export const Board = ({matrix, onCellClick}) => (
   <Table>
     <tbody>
       {matrix.map((row, rowID) => (
         <tr key={rowID}>
-          {row.map((content, cellID) => (
-            <Cell key={`${rowID}.${cellID}`} content={content} />
+          {row.map((content, collumnID) => (
+            <TableCell 
+              onClick={() => onCellClick({row: rowID, col: collumnID})} 
+              key={`${row}.${collumnID}`}
+            >
+              {content}
+            </TableCell>
           ))}
         </tr>
       ))}
@@ -21,8 +26,9 @@ export const Board = ({matrix}) => (
 )
 
 Board.propTypes = {
-    matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
-    isDecorative: PropTypes.bool
+  matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  isDecorative: PropTypes.bool,
+  onCellClick: PropTypes.func,
 }
 
 export default Board;
@@ -34,11 +40,5 @@ const TableCell = styled.td`
   font-weight: lighter;
   width: 1.2em;
   height: 1.2em;
-  color: ${ ({content}) => content === 'X' ? '#c51162' : '#303f9f' }
+  color: ${ ({children}) => children === 'X' ? '#c51162' : '#303f9f' }
 `;
-
-const Cell = ({content}) => (
-  <TableCell content={content}>
-    {content}
-  </TableCell>
-)
