@@ -1,16 +1,16 @@
-import { cellContent, checkForGameOver } from './ticTacToe';
+import { checkForGameOver } from './ticTacToe';
+import { roundOutcomes, cellContent } from '../../ticTacToeConstants';
 
 describe('isGameover', () => {
 
   const {x, o, emptyCell: _} = cellContent
 
-  test('still playing', () => {
+  test.only('still playing', () => {
     
     const run = (matrix) => {
-      const {isWin, isMatrixFull, isGameOver} = checkForGameOver(matrix)
+      const {outCome, isGameOver} = checkForGameOver(matrix)
       expect(isGameOver).toBe(false)
-      expect(isWin).toBe(false)
-      expect(isMatrixFull).toBe(false)
+      expect(outCome).toBe(undefined)
     }
     
     run([
@@ -29,11 +29,9 @@ describe('isGameover', () => {
   test('x isWin', () => {
     
     const run = (matrix) => {
-      const {isWin, isMatrixFull, winner, isGameOver} = checkForGameOver(matrix)
+      const {outCome, isGameOver} = checkForGameOver(matrix)
       expect(isGameOver).toBe(true)
-      expect(isWin).toBe(true)
-      expect(winner).toBe(x)
-      expect(isMatrixFull).toBe(false)
+      expect(outCome).toBe(roundOutcomes.xWin)
     }
 
     run([
@@ -57,11 +55,9 @@ describe('isGameover', () => {
   test('o isWin', () => {
     
     const run = (matrix) => {
-      const {isWin, isMatrixFull, winner, isGameOver} = checkForGameOver(matrix)
+      const {outCome, isGameOver} = checkForGameOver(matrix)
       expect(isGameOver).toBe(true)
-      expect(isWin).toBe(true)
-      expect(winner).toBe(o)
-      expect(isMatrixFull).toBe(false)
+      expect(outCome).toBe(roundOutcomes.oWin)
     }
 
     run([
@@ -85,10 +81,9 @@ describe('isGameover', () => {
   test('no isWin, matrix full', () => {
     
     const run = (matrix) => {
-      const {isWin, isMatrixFull, isGameOver} = checkForGameOver(matrix)
+      const {outCome, isGameOver} = checkForGameOver(matrix)
       expect(isGameOver).toBe(true)
-      expect(isWin).toBe(false)
-      expect(isMatrixFull).toBe(true)
+      expect(outCome).toBe(roundOutcomes.matrixFull)
     }
 
     run([

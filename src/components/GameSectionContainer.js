@@ -1,6 +1,7 @@
 import React, { useEffect, Fragment } from 'react';
 import GameSectionPresenter from './GameSection';
-import { initialize, players, playerMove } from '../redux/modules/ticTacToe';
+import { initialize, playerMove } from '../redux/modules/ticTacToe';
+import { players } from '../ticTacToeConstants';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { selectResultHistory } from '../redux/modules/ticTacToeRoundHistory';

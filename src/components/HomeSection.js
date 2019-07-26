@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Board from './Board';
 import { Button, Dialog } from '@material-ui/core';
 import GameSetupDialog from './GameSetupDialog'
-import { cellContent } from '../redux/modules/ticTacToe';
+import { cellContent } from '../ticTacToeConstants';
 
 const decorativeBoardMatrix = [
     [cellContent.x, cellContent.o, cellContent.empty, cellContent.x],
