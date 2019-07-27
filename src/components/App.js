@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import GameSection from './GameSectionContainer';
+import ControllableGameSection from './ControllableGameSection';
 import HomeSection from './HomeSection';
 
 const AnyPageRoot = styled.div`
@@ -11,7 +11,7 @@ const App = () => {
   const [gameSize, setGameSize] = useState(null);
 
   if (gameSize)
-    return <AnyPageRoot><GameSection gameSize={3} /></AnyPageRoot>;
+    return <AnyPageRoot><ControllableGameSection gameSize={3} /></AnyPageRoot>;
   else
     return <AnyPageRoot><HomeSection navigateToGame={setGameSize} /></AnyPageRoot>
 }

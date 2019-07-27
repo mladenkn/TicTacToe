@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import GameSetupDialog from './GameSetupDialog';
 import React, { useState } from 'react';
 import { Button, Typography } from '@material-ui/core';
+import { roundOutcomes } from '../ticTacToeConstants';
 
 const GameRestartDialog = ({outCome, onAccept, onCancel}) => {
   
   let message;
-  if(outCome === 'x win')
+  if(outCome === roundOutcomes.xWin)
     message = 'Player X has won!';
-  else if(outCome === 'o win')
+  else if(outCome === roundOutcomes.oWin)
     message = 'Player O has won!';
   else
     message = 'Draw!';
@@ -19,7 +20,7 @@ const GameRestartDialog = ({outCome, onAccept, onCancel}) => {
     return (
       <div>
         <Typography>{message}</Typography>
-        <Typography>Do you want to restart the game?</Typography>        
+        <Typography>Do you want to play again?</Typography>        
         <div>
           <Button color='secondary'>No</Button>
           <Button onClick={() => setStage(2)} color='primary'>Yes</Button>
@@ -28,7 +29,7 @@ const GameRestartDialog = ({outCome, onAccept, onCancel}) => {
     );
 
   else 
-      return <GameSetupDialog onAccept={onAccept} onCancel={onCancel} />
+    return <GameSetupDialog onAccept={onAccept} onCancel={onCancel} />
 };
 
 GameRestartDialog.propTypes = {
