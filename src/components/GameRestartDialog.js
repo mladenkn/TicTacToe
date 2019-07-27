@@ -22,7 +22,7 @@ const GameRestartDialog = ({outCome, onAccept, onCancel}) => {
         <Typography>{message}</Typography>
         <Typography>Do you want to play again?</Typography>        
         <div>
-          <Button color='secondary'>No</Button>
+          <Button onCancel={onCancel} color='secondary'>No</Button>
           <Button onClick={() => setStage(2)} color='primary'>Yes</Button>
         </div>
       </div>
