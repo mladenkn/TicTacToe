@@ -1,4 +1,4 @@
-import { checkForGameOver } from './ticTacToe';
+import { checkForGameOver } from './ticTacToeRound';
 import { roundOutcomes, cellContent } from '../../ticTacToeConstants';
 
 describe('isGameover', () => {
