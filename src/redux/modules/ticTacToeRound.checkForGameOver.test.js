@@ -8,9 +8,9 @@ describe('isGameover', () => {
   test.only('still playing', () => {
     
     const run = (matrix) => {
-      const {outCome, isGameOver} = checkForGameOver(matrix)
+      const {outcome, isGameOver} = checkForGameOver(matrix)
       expect(isGameOver).toBe(false)
-      expect(outCome).toBe(undefined)
+      expect(outcome).toBe(undefined)
     }
     
     run([
@@ -29,9 +29,9 @@ describe('isGameover', () => {
   test('x isWin', () => {
     
     const run = (matrix) => {
-      const {outCome, isGameOver} = checkForGameOver(matrix)
+      const {outcome, isGameOver} = checkForGameOver(matrix)
       expect(isGameOver).toBe(true)
-      expect(outCome).toBe(roundOutcomes.xWin)
+      expect(outcome).toBe(roundOutcomes.xWin)
     }
 
     run([
@@ -55,9 +55,9 @@ describe('isGameover', () => {
   test('o isWin', () => {
     
     const run = (matrix) => {
-      const {outCome, isGameOver} = checkForGameOver(matrix)
+      const {outcome, isGameOver} = checkForGameOver(matrix)
       expect(isGameOver).toBe(true)
-      expect(outCome).toBe(roundOutcomes.oWin)
+      expect(outcome).toBe(roundOutcomes.oWin)
     }
 
     run([
@@ -81,9 +81,9 @@ describe('isGameover', () => {
   test('no isWin, matrix full', () => {
     
     const run = (matrix) => {
-      const {outCome, isGameOver} = checkForGameOver(matrix)
+      const {outcome, isGameOver} = checkForGameOver(matrix)
       expect(isGameOver).toBe(true)
-      expect(outCome).toBe(roundOutcomes.matrixFull)
+      expect(outcome).toBe(roundOutcomes.matrixFull)
     }
 
     run([

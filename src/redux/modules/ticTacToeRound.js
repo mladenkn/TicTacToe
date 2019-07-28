@@ -36,16 +36,16 @@ export const checkForGameOver = (matrix) => {
 
   for (const line of allLines) {
     if(allElementsAreEqual(line)  &&  line[0] !== cellContent.emptyCell){
-      let outCome;
+      let outcome;
       if(line[0] === players.x)
-        outCome = roundOutcomes.xWin;
+        outcome = roundOutcomes.xWin;
       if(line[0] === players.o)
-        outCome = roundOutcomes.oWin;
-      return { isGameOver: true, outCome }
+        outcome = roundOutcomes.oWin;
+      return { isGameOver: true, outcome }
     }
   }
   
   const isMatrixFull = flatten(matrix).every(c => c !== cellContent.emptyCell);
-  const outCome = isMatrixFull ? roundOutcomes.matrixFull : undefined;
-  return { isGameOver: isMatrixFull, outCome }  
+  const outcome = isMatrixFull ? roundOutcomes.matrixFull : undefined;
+  return { isGameOver: isMatrixFull, outcome }  
 }

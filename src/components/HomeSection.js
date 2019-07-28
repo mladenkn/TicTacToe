@@ -43,8 +43,7 @@ const HomeSection = ({navigateToGame}) => {
         <StyledGameSetupDialog onAccept={navigateToGame} onCancel={() => setDialogOpen(false)} />
       </Dialog>
     </SetuPageRoot>
-    )
-  ;
-};
+  );
+}
 
 export default HomeSection;

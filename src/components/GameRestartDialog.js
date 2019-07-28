@@ -18,12 +18,12 @@ const StyledButton = styled(Button)`
  }
 `
 
-const GameRestartDialog = ({outCome, onAccept, onCancel, className}) => {
+const GameRestartDialog = ({outcome, onAccept, onCancel, className}) => {
   
   let message;
-  if(outCome === roundOutcomes.xWin)
+  if(outcome === roundOutcomes.xWin)
     message = 'Player X has won!';
-  else if(outCome === roundOutcomes.oWin)
+  else if(outcome === roundOutcomes.oWin)
     message = 'Player O has won!';
   else
     message = 'Draw!';
@@ -52,7 +52,7 @@ const GameRestartDialog = ({outCome, onAccept, onCancel, className}) => {
 };
 
 GameRestartDialog.propTypes = {
-  outCome: PropTypes.string,
+  outcome: PropTypes.string,
   onAccept: PropTypes.func,
   onCancel: PropTypes.func
 };

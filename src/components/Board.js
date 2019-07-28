@@ -6,6 +6,16 @@ const Table = styled.table`
   border-collapse: collapse;    
 `;
 
+const TableCell = styled.td`
+  border: 0.04em solid black;
+  text-align: center;
+  font-size: 1em;
+  font-weight: lighter;
+  width: 1.2em;
+  height: 1.2em;
+  color: ${ ({children}) => children === 'X' ? '#c51162' : '#303f9f' }
+`;
+
 export const Board = ({matrix, onCellClick}) => (
   <Table>
     <tbody>
@@ -32,13 +42,3 @@ Board.propTypes = {
 }
 
 export default Board;
-
-const TableCell = styled.td`
-  border: 0.04em solid black;
-  text-align: center;
-  font-size: 1em;
-  font-weight: lighter;
-  width: 1.2em;
-  height: 1.2em;
-  color: ${ ({children}) => children === 'X' ? '#c51162' : '#303f9f' }
-`;
