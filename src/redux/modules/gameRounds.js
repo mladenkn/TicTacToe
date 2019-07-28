@@ -1,5 +1,5 @@
 import { players } from '../../ticTacToeConstants';
-import * as singleRound from './ticTacToeRound';
+import * as singleRound from './gameRound';
 
 const NEW_ROUND = 'tic-tac-toe-rounds/NEW_ROUND';
 

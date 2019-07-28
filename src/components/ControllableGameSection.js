@@ -7,12 +7,12 @@ import styled from 'styled-components';
 import { IconButton } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectResultHistory } from '../redux/modules/ticTacToeRounds';
-import { playerMove } from '../redux/modules/ticTacToeRound';
+import { selectResultHistory } from '../redux/modules/gameRounds';
+import { playerMove } from '../redux/modules/gameRound';
 
 const useLogic = () => {
   
-  const { current: currentRound, history } = useSelector(s => s.ticTacToeRounds);  
+  const { current: currentRound, history } = useSelector(s => s.gameRounds);  
   const resultHistory = selectResultHistory(history);
   
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const useLogic = () => {
 
 const MainContent = styled.div`
   display: flex;
-`
+`;
 
 const BackButton = styled(IconButton)`
   && {
@@ -41,7 +41,7 @@ const BackButton = styled(IconButton)`
     padding: 0.5em;
     margin-right: 0.55em;
   }
-`
+`;
 
 export const ControllableGameSection = (({onGoBack, onRestart}) => {
 

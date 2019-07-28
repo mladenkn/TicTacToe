@@ -4,7 +4,7 @@ import ControllableGameSection from './ControllableGameSection';
 import HomeSection from './HomeSection';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useDispatch } from 'react-redux';
-import { newRound } from '../redux/modules/ticTacToeRounds';
+import { newRound } from '../redux/modules/gameRounds';
 import { players } from '../ticTacToeConstants';
 
 const Root = styled.div`

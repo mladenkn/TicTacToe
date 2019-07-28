@@ -1,11 +1,11 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { createLogger } from 'redux-logger';
-import ticTacToeRounds from './modules/ticTacToeRounds';
+import gameRounds from './modules/gameRounds';
 
 const createStoreWithMiddleware = applyMiddleware(createLogger())(createStore);
 
 const reducer = combineReducers({
-  ticTacToeRounds,
+  gameRounds,
 });
 
 const configureStore = (initialState) => createStoreWithMiddleware(reducer, initialState);
