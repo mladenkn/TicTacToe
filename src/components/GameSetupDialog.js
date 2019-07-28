@@ -33,14 +33,19 @@ const ActionsRow = styled.div`
   justify-content: flex-end;
   margin-top: 0.2em;
   width: 12em;
-`
+`;
+
+const Root = styled.div`
+  padding: 0.5em 1.2em 0.3em;
+  overflow-x: hidden;
+`;
 
 const GameSetupDialog = ({onAccept, onCancel, className}) => {
 
   const [gameSize, setGameSize] = useState(3)
 
   return (
-    <div className={className}>
+    <Root className={className}>
       <GameSizePickRow>
         <GameSizeHeading gutterBottom variant='h6'>Pick Game Size:</GameSizeHeading>
         <GameSizeInput 
@@ -56,7 +61,7 @@ const GameSetupDialog = ({onAccept, onCancel, className}) => {
         <StyledCancelButton onClick={onCancel} color='secondary'>Cancel</StyledCancelButton>
         <StyledOKButton onClick={() => onAccept({gameSize})} color='primary'>OK</StyledOKButton>
       </ActionsRow>
-    </div>
+    </Root>
   );
 };
 

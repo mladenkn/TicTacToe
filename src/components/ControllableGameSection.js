@@ -28,13 +28,9 @@ export const ControllableGameSection = (({gameSize, onGoBack}) => {
     <Fragment />
 });
 
-const StyledGameRestartDialogContent = styled(GameRestartDialogContent)`
-  padding: 0.5em 1.5em 0 1.5em;
-`
-
 export const GameRestartDialog = (p) => 
   <Dialog open={p.open}>    
-    <StyledGameRestartDialogContent {...p} />
+    <GameRestartDialogContent {...p} />
   </Dialog>
 
 ControllableGameSection.propTypes = {

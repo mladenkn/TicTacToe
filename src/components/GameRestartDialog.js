@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { Fragment } from 'react';
 
 const Actions = styled.div`
-  margin-top: 0.2em;
+  margin-top: 0.3em;
   display: flex;
   justify-content: flex-end;
 `;
@@ -16,9 +16,13 @@ const StyledButton = styled(Button)`
  && {
   min-width: auto;
  }
+`;
+
+const Stage1Root = styled.div`
+ padding: 0.5em 0.7em 0.1em;
 `
 
-const GameRestartDialog = ({outcome, onAccept, onCancel, className}) => {
+const GameRestartDialog = ({outcome, onAccept, onCancel}) => {
   
   let message;
   if(outcome === roundOutcomes.xWin)
@@ -31,23 +35,19 @@ const GameRestartDialog = ({outcome, onAccept, onCancel, className}) => {
   const [stage, setStage] = useState(1);
 
   return (
-    <div className={className}>
+    <Fragment>
       {stage === 1  && (
-        <Fragment>
+        <Stage1Root>
           <Typography gutterBottom align='center' variant='h6'>{message}</Typography>
           <Typography>Do you want to play again?</Typography>        
           <Actions>
             <StyledButton onCancel={onCancel} color='secondary'>No</StyledButton>
             <StyledButton onClick={() => setStage(2)} color='primary'>Yes</StyledButton>
           </Actions>
-        </Fragment>
+        </Stage1Root>
       )}
-      {stage === 2  && (
-        <Fragment>
-          <GameSetupDialog onAccept={onAccept} onCancel={onCancel} />
-        </Fragment>
-      )}
-    </div>
+      {stage === 2  && <GameSetupDialog onAccept={onAccept} onCancel={onCancel} /> }
+    </Fragment>
   )
 };
 
