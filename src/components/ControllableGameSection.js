@@ -52,7 +52,7 @@ export const ControllableGameSection = (({gameSize, onGoBack}) => {
 });
 
 const StyledGameRestartDialogContent = styled(GameRestartDialogContent)`
-  padding: 0.5em 0.5em 0;
+  padding: 0.5em 1.5em 0 1.5em;
 `
 
 export const GameRestartDialog = (p) => 
