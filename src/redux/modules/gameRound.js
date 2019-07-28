@@ -1,6 +1,6 @@
 import { getMatrixDiagonals, updateMatrixCell, createMatrix, allElementsAreEqual, getMatrixCollumns } from "../../utils";
 import flatten from 'flatten';
-import { players, cellContent, roundOutcomes } from '../../ticTacToeConstants';
+import { players, cellContent, roundStatus } from '../../ticTacToeConstants';
 
 const PLAYER_MOVE = 'tic-tac-toe-round/PLAYER_MOVE';
 const INITIALIZE = 'tic-tac-toe-round/INITIALIZE';
@@ -14,13 +14,13 @@ export const reducer = (state = {}, action = {}) => {
     case INITIALIZE:
       const {gameSize, firstPlayer} = action.payload;
       const matrix = createMatrix(gameSize, gameSize, cellContent.emptyCell);
-      return {matrix, gameSize, isGameOver: false, nextPlayer: firstPlayer};
+      return {matrix, gameSize, status: roundStatus.playing, nextPlayer: firstPlayer};
     
     case PLAYER_MOVE:
       const {row, col} = action.payload;
       const updatedMatrix = updateMatrixCell(state.matrix, {x: row, y: col}, state.nextPlayer);
       const nextPlayer = state.nextPlayer === players.x ? players.o : players.x;
-      return { ...state, matrix: updatedMatrix, nextPlayer, ...checkForGameOver(updatedMatrix) };
+      return { ...state, matrix: updatedMatrix, nextPlayer, status: getStatus(updatedMatrix) };
       
     default: 
       return state;
@@ -28,24 +28,21 @@ export const reducer = (state = {}, action = {}) => {
 }
 export default reducer;
 
-export const checkForGameOver = (matrix) => {
+export const getStatus = matrix => {
 
   const allLines = [
     ...matrix, ...getMatrixCollumns(matrix), ...getMatrixDiagonals(matrix)
-  ]
+  ];
 
   for (const line of allLines) {
     if(allElementsAreEqual(line)  &&  line[0] !== cellContent.emptyCell){
-      let outcome;
       if(line[0] === players.x)
-        outcome = roundOutcomes.xWin;
+        return roundStatus.xWin;
       if(line[0] === players.o)
-        outcome = roundOutcomes.oWin;
-      return { isGameOver: true, outcome }
+        return roundStatus.oWin;
     }
   }
   
   const isMatrixFull = flatten(matrix).every(c => c !== cellContent.emptyCell);
-  const outcome = isMatrixFull ? roundOutcomes.matrixFull : undefined;
-  return { isGameOver: isMatrixFull, outcome }  
+  return isMatrixFull ? roundStatus.matrixFull : roundStatus.playing;
 }

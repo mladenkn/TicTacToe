@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import GameSection from './GameSection';
 import PropTypes from 'prop-types';
 import GameRestartDialog from './GameRestartDialog';
@@ -6,30 +6,7 @@ import { Dialog } from '@material-ui/core';
 import styled from 'styled-components';
 import { IconButton } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectResultHistory } from '../redux/modules/gameRounds';
-import { playerMove } from '../redux/modules/gameRound';
-
-const useLogic = () => {
-  
-  const { current: currentRound, history } = useSelector(s => s.gameRounds);  
-  const resultHistory = selectResultHistory(history);
-  
-  const dispatch = useDispatch();
-  const onCellClick = ({row, col}) => dispatch(playerMove(row, col));
-
-  const [userClosedDialog, setUserClosedDialog] = useState(false);
-
-  return {
-    playing: !currentRound.isGameOver,
-    gameOverDialogOpen: currentRound.isGameOver && userClosedDialog,
-    gameOverDialogClosed: userClosedDialog,
-    onCloseDialog: () => setUserClosedDialog(true),
-    round: currentRound,
-    onMatrixCellClick: onCellClick,
-    resultHistory,
-  };
-}
+import useLogic from '../connectors/useGameLogic';
 
 const MainContent = styled.div`
   display: flex;
@@ -74,7 +51,7 @@ export const ControllableGameSection = (({onGoBack, onRestart}) => {
           <GameRestartDialog 
             onCancel={onCloseDialog}
             onAccept={onRestart}
-            outcome={round.outcome}
+            status={round.status}
           />
         </Dialog> 
       </Fragment>

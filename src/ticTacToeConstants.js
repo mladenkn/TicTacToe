@@ -6,8 +6,9 @@ const emptyCell = ''
 
 export const cellContent = { ...players, emptyCell }
 
-export const roundOutcomes = {
+export const roundStatus = {
   xWin: 'xWin',
   oWin: 'oWin',
   matrixFull: 'matrixFull',
+  playing: 'playing',
 }

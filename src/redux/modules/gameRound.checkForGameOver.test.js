@@ -1,5 +1,5 @@
-import { checkForGameOver } from './gameRound';
-import { roundOutcomes, cellContent } from '../../ticTacToeConstants';
+import { getStatus } from './gameRound';
+import { roundStatus, cellContent } from '../../ticTacToeConstants';
 
 describe('isGameover', () => {
 
@@ -8,9 +8,8 @@ describe('isGameover', () => {
   test.only('still playing', () => {
     
     const run = (matrix) => {
-      const {outcome, isGameOver} = checkForGameOver(matrix)
-      expect(isGameOver).toBe(false)
-      expect(outcome).toBe(undefined)
+      const status = getStatus(matrix)
+      expect(status).toBe(roundStatus.playing)
     }
     
     run([
@@ -29,9 +28,8 @@ describe('isGameover', () => {
   test('x isWin', () => {
     
     const run = (matrix) => {
-      const {outcome, isGameOver} = checkForGameOver(matrix)
-      expect(isGameOver).toBe(true)
-      expect(outcome).toBe(roundOutcomes.xWin)
+      const status = getStatus(matrix)
+      expect(status).toBe(roundStatus.xWin)
     }
 
     run([
@@ -55,9 +53,8 @@ describe('isGameover', () => {
   test('o isWin', () => {
     
     const run = (matrix) => {
-      const {outcome, isGameOver} = checkForGameOver(matrix)
-      expect(isGameOver).toBe(true)
-      expect(outcome).toBe(roundOutcomes.oWin)
+      const status = getStatus(matrix)
+      expect(status).toBe(roundStatus.oWin)
     }
 
     run([
@@ -78,12 +75,11 @@ describe('isGameover', () => {
     ]);
   })
 
-  test('no isWin, matrix full', () => {
+  test('matrix full', () => {
     
     const run = (matrix) => {
-      const {outcome, isGameOver} = checkForGameOver(matrix)
-      expect(isGameOver).toBe(true)
-      expect(outcome).toBe(roundOutcomes.matrixFull)
+      const status = getStatus(matrix)
+      expect(status).toBe(roundStatus.matrixFull)
     }
 
     run([

@@ -1,12 +1,13 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { configureStore } from 'redux-starter-kit'
 import { createLogger } from 'redux-logger';
 import gameRounds from './modules/gameRounds';
 
-const createStoreWithMiddleware = applyMiddleware(createLogger())(createStore);
-
-const reducer = combineReducers({
-  gameRounds,
+export default (preloadedState = undefined) => configureStore({
+  reducer: {
+    gameRounds,
+  },
+  middleware: [
+    createLogger()
+  ],
+  preloadedState
 });
-
-const configureStore = (initialState) => createStoreWithMiddleware(reducer, initialState);
-export default configureStore;  

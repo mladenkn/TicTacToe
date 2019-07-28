@@ -1,4 +1,4 @@
-import { players } from '../../ticTacToeConstants';
+import { players, roundStatus } from '../../ticTacToeConstants';
 import * as singleRound from './gameRound';
 
 const NEW_ROUND = 'tic-tac-toe-rounds/NEW_ROUND';
@@ -18,7 +18,7 @@ export const reducer = (state = {current: undefined, history: []}, action = {}) 
     default: {
       const current = singleRound.reducer(state.current, action);
       let history = state.history;
-      if(current.isGameOver)
+      if(current.status !== roundStatus.playing)
         history = history.concat(current);
       return {...state, history, current };
     }

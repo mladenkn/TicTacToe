@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import GameSetupDialog from './GameSetupDialog';
 import React, { useState } from 'react';
 import { Button, Typography } from '@material-ui/core';
-import { roundOutcomes } from '../ticTacToeConstants';
+import { roundStatus } from '../ticTacToeConstants';
 import styled from 'styled-components';
 import { Fragment } from 'react';
 
@@ -22,12 +22,12 @@ const Stage1Root = styled.div`
  padding: 0.5em 0.7em 0.1em;
 `
 
-const GameRestartDialog = ({outcome, onAccept, onCancel}) => {
+const GameRestartDialog = ({status, onAccept, onCancel}) => {
   
   let message;
-  if(outcome === roundOutcomes.xWin)
+  if(status === roundStatus.xWin)
     message = 'Player X has won!';
-  else if(outcome === roundOutcomes.oWin)
+  else if(status === roundStatus.oWin)
     message = 'Player O has won!';
   else
     message = 'Draw!';
@@ -52,7 +52,7 @@ const GameRestartDialog = ({outcome, onAccept, onCancel}) => {
 };
 
 GameRestartDialog.propTypes = {
-  outcome: PropTypes.string,
+  status: PropTypes.string,
   onAccept: PropTypes.func,
   onCancel: PropTypes.func,
 };
