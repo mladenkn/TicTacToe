@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Board from './Board';
-import { Button, Dialog } from '@material-ui/core';
+import { Fab, Dialog } from '@material-ui/core';
 import GameSetupDialog from './GameSetupDialog'
 import { cellContent } from '../ticTacToeConstants';
 
@@ -26,14 +26,14 @@ const BoardContainer = styled.div`
 `;
 
 const HomeSection = ({navigateToGame}) => {  
-  const [dialogOpen, setDialogOpen] = useState(true);
+  const [dialogOpen, setDialogOpen] = useState(false);
   return (
     <SetuPageRoot>
       <BoardContainer>
         <Board matrix={decorativeBoardMatrix} isDecorative />
       </BoardContainer>
       <Menu>
-        <Button color='primary' variant='contained' onClick={() => setDialogOpen(true)}>Play now</Button>
+        <Fab variant="extended" onClick={() => setDialogOpen(true)} color="primary">Play now</Fab>
       </Menu>
       <Dialog open={dialogOpen}>
         <GameSetupDialog onAccept={navigateToGame} onCancel={() => setDialogOpen(false)} />

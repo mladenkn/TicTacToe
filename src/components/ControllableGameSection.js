@@ -3,23 +3,31 @@ import GameSection from './GameSection';
 import PropTypes from 'prop-types';
 import GameRestartDialog from './GameRestartDialog';
 import { Dialog } from '@material-ui/core';
-import useTicTacToe from '../redux/connectors/useTicTacToe';
 import styled from 'styled-components';
 import { IconButton } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectResultHistory } from '../redux/modules/ticTacToeRounds';
+import { playerMove } from '../redux/modules/ticTacToeRound';
 
-const useLogic = (gameSize) => {
-  const wrapped = useTicTacToe(gameSize);
+const useLogic = () => {
+  
+  const { current: currentRound, history } = useSelector(s => s.ticTacToeRounds);  
+  const resultHistory = selectResultHistory(history);
+  
+  const dispatch = useDispatch();
+  const onCellClick = ({row, col}) => dispatch(playerMove(row, col));
+
   const [userClosedDialog, setUserClosedDialog] = useState(false);
+
   return {
-    noContent: !wrapped.roundInitialized, 
-    playing: wrapped.roundInitialized && !wrapped.gameOver,
-    gameOverDialogOpen: wrapped.roundInitialized && wrapped.gameOver,
+    playing: !currentRound.isGameOver,
+    gameOverDialogOpen: currentRound.isGameOver && userClosedDialog,
     gameOverDialogClosed: userClosedDialog,
     onCloseDialog: () => setUserClosedDialog(true),
-    round: wrapped.currentRound,
-    onMatrixCellClick: wrapped.onCellClick,
-    resultHistory: wrapped.resultHistory,
+    round: currentRound,
+    onMatrixCellClick: onCellClick,
+    resultHistory,
   };
 }
 
@@ -35,10 +43,10 @@ const BackButton = styled(IconButton)`
   }
 `
 
-export const ControllableGameSection = (({gameSize, onGoBack}) => {
+export const ControllableGameSection = (({onGoBack, onRestart}) => {
 
   const { noContent, playing, gameOverDialogOpen, onCloseDialog, round,
-    onMatrixCellClick, resultHistory, gameOverDialogClosed } = useLogic(gameSize);
+    onMatrixCellClick, resultHistory, gameOverDialogClosed } = useLogic();
 
   const mainContent = (
     <MainContent>
@@ -65,7 +73,7 @@ export const ControllableGameSection = (({gameSize, onGoBack}) => {
         <Dialog open={true}>
           <GameRestartDialog 
             onCancel={onCloseDialog}
-            onAccept={() => {}}
+            onAccept={onRestart}
             outcome={round.outcome}
           />
         </Dialog> 
@@ -82,6 +90,7 @@ export const ControllableGameSection = (({gameSize, onGoBack}) => {
 ControllableGameSection.propTypes = {
   gameSize: PropTypes.number,
   onGoBack: PropTypes.func,
+  onRestart: PropTypes.func,
 };
 
 export default ControllableGameSection;
