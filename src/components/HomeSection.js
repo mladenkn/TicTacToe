@@ -25,6 +25,10 @@ const BoardContainer = styled.div`
   font-size: 2.2em;
 `;
 
+const StyledGameSetupDialog = styled(GameSetupDialog)`
+  padding: 0.5em 0.5em 0;
+`
+
 const HomeSection = ({navigateToGame}) => {  
   const [dialogOpen, setDialogOpen] = useState(true);
   return (
@@ -36,7 +40,7 @@ const HomeSection = ({navigateToGame}) => {
         <Button color='primary' variant='contained' onClick={() => setDialogOpen(true)}>Play now</Button>
       </Menu>
       <Dialog open={dialogOpen}>
-        <GameSetupDialog onAccept={navigateToGame} onCancel={() => setDialogOpen(false)} />
+        <StyledGameSetupDialog onAccept={navigateToGame} onCancel={() => setDialogOpen(false)} />
       </Dialog>
     </SetuPageRoot>
     )

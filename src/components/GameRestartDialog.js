@@ -3,8 +3,21 @@ import GameSetupDialog from './GameSetupDialog';
 import React, { useState } from 'react';
 import { Button, Typography } from '@material-ui/core';
 import { roundOutcomes } from '../ticTacToeConstants';
+import styled from 'styled-components';
 
-const GameRestartDialog = ({outCome, onAccept, onCancel}) => {
+const Actions = styled.div`
+  margin-top: 0.2em;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const StyledButton = styled(Button)`
+ && {
+  min-width: auto;
+ }
+`
+
+const GameRestartDialog = ({outCome, onAccept, onCancel, className}) => {
   
   let message;
   if(outCome === roundOutcomes.xWin)
@@ -18,18 +31,18 @@ const GameRestartDialog = ({outCome, onAccept, onCancel}) => {
 
   if (stage === 1)
     return (
-      <div>
-        <Typography>{message}</Typography>
+      <div className={className}>
+        <Typography gutterBottom align='center' variant='h6'>{message}</Typography>
         <Typography>Do you want to play again?</Typography>        
-        <div>
-          <Button onCancel={onCancel} color='secondary'>No</Button>
-          <Button onClick={() => setStage(2)} color='primary'>Yes</Button>
-        </div>
+        <Actions>
+          <StyledButton onCancel={onCancel} color='secondary'>No</StyledButton>
+          <StyledButton onClick={() => setStage(2)} color='primary'>Yes</StyledButton>
+        </Actions>
       </div>
     );
 
   else 
-    return <GameSetupDialog onAccept={onAccept} onCancel={onCancel} />
+    return <div className={className}><GameSetupDialog onAccept={onAccept} onCancel={onCancel} /></div>
 };
 
 GameRestartDialog.propTypes = {

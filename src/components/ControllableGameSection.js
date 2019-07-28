@@ -5,7 +5,8 @@ import { players } from '../ticTacToeConstants';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { newRound, selectResultHistory } from '../redux/modules/ticTacToeRounds';
-import GameRestartDialog from './GameRestartDialog';
+import GameRestartDialogContent from './GameRestartDialog';
+import styled from 'styled-components';
 import { Dialog } from '@material-ui/core';
 import { isEmpty } from 'ramda';
 
@@ -41,16 +42,23 @@ export const ControllableGameSection = (({gameSize, onGoBack}) => {
         matrix={currentRound.matrix} 
         resultHistory={resultHistory} 
       />
-      <Dialog open={currentRound.isGameOver}>
-        <GameRestartDialog 
-          outCome={currentRound.outCome} 
-          onAccept={({gameSize}) => onStartNewRound(gameSize)} 
-          onCancel={onGoBack} 
-        />
-      </Dialog>
+      <GameRestartDialog 
+        onAccept={({gameSize}) => onStartNewRound(gameSize)} 
+        onGoBack={onGoBack}
+        open={currentRound.isGameOver} 
+      />
     </Fragment> :
     <Fragment />
 });
+
+const StyledGameRestartDialogContent = styled(GameRestartDialogContent)`
+  padding: 0.5em 0.5em 0;
+`
+
+export const GameRestartDialog = (p) => 
+  <Dialog open={p.open}>    
+    <StyledGameRestartDialogContent {...p} />
+  </Dialog>
 
 ControllableGameSection.propTypes = {
   gameSize: PropTypes.number,
