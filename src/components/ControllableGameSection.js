@@ -4,30 +4,18 @@ import PropTypes from 'prop-types';
 import GameRestartDialog from './GameRestartDialog';
 import { Dialog } from '@material-ui/core';
 import styled from 'styled-components';
-import { IconButton } from '@material-ui/core';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import useLogic from '../connectors/useGameLogic';
 
 const MainContent = styled.div`
-  display: flex;
 `;
 
-const BackButton = styled(IconButton)`
-  && {
-    height: 2em;
-    padding: 0.5em;
-    margin-right: 0.55em;
-  }
-`;
-
-export const ControllableGameSection = (({onGoBack, onRestart}) => {
+export const ControllableGameSection = (({onRestart, className}) => {
 
   const { noContent, playing, gameOverDialogOpen, onCloseDialog, round,
     onMatrixCellClick, resultHistory, gameOverDialogClosed } = useLogic();
 
   const mainContent = (
-    <MainContent>
-      <BackButton onClick={onGoBack}><ArrowBackIcon /></BackButton>
+    <MainContent className={className}>
       <GameSection 
         nextPlayer={round.nextPlayer} 
         onCellClick={onMatrixCellClick}
@@ -66,7 +54,6 @@ export const ControllableGameSection = (({onGoBack, onRestart}) => {
 
 ControllableGameSection.propTypes = {
   gameSize: PropTypes.number,
-  onGoBack: PropTypes.func,
   onRestart: PropTypes.func,
 };
 
