@@ -12,7 +12,7 @@ const TableCell = styled.td`
   font-size: 1em;
   font-weight: lighter;
   width: 1.2em;
-  height: 1.2em;
+  height: 1.45em;
   color: ${ ({children}) => children === 'X' ? '#c51162' : '#303f9f' }
 `;
 

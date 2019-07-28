@@ -54,7 +54,7 @@ const GameRestartDialog = ({outcome, onAccept, onCancel}) => {
 GameRestartDialog.propTypes = {
   outcome: PropTypes.string,
   onAccept: PropTypes.func,
-  onCancel: PropTypes.func
+  onCancel: PropTypes.func,
 };
 
 export default GameRestartDialog;

@@ -13,16 +13,16 @@ const App = () => (
   <Router>
     <Root>
       <Route 
-        path="/play/:gameSize" 
-        component={({ match }) => 
-          <ControllableGameSection gameSize={parseInt(match.params.gameSize)} />
-        } 
-      />
-      <Route 
         path="/" 
         exact 
         component={({ history }) => 
           <HomeSection navigateToGame={({ gameSize }) => history.push(`/play/${gameSize}`)} />
+        } 
+      />
+      <Route 
+        path="/play/:gameSize" 
+        component={({ match, history }) => 
+          <ControllableGameSection gameSize={parseInt(match.params.gameSize)} onGoBack={history.goBack} />
         } 
       />
     </Root>
