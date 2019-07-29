@@ -20,7 +20,7 @@ export const reducer = (state = {current: undefined, history: []}, action = {}) 
       let history = state.history;
       if(current.status && current.status !== roundStatus.playing)
         history = history.concat(current);
-      return {...state, history, current };selectResultHistory
+      return {...state, history, current };
     }
   }
 }
