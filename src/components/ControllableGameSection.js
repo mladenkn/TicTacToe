@@ -9,7 +9,7 @@ import useLogic from '../connectors/useGameLogic';
 const MainContent = styled.div`
 `;
 
-export const ControllableGameSection = (({onRestart, className, variant}) => {
+export const ControllableGameSection = (({onRestart, className, direction}) => {
 
   const { playing, gameOverDialogOpen, onCloseDialog, round,
     onMatrixCellClick, resultHistory, gameOverDialogClosed } = useLogic();
@@ -21,7 +21,7 @@ export const ControllableGameSection = (({onRestart, className, variant}) => {
         onCellClick={e => playing && onMatrixCellClick(e)}
         matrix={round.matrix} 
         resultHistory={resultHistory} 
-        variant={variant}
+        direction={direction}
       />
     </MainContent>
   );
@@ -53,7 +53,7 @@ export const ControllableGameSection = (({onRestart, className, variant}) => {
 ControllableGameSection.propTypes = {
   onRestart: PropTypes.func.isRequired,
   className: PropTypes.string,
-  variant: PropTypes.oneOf(['row', 'col']),
+  direction: PropTypes.oneOf(['row', 'col']),
 };
 
 export default ControllableGameSection;

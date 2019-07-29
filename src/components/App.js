@@ -5,8 +5,10 @@ import GamePage from './GamePage';
 
 const App = () => (
   <Router>
-    <Route path="/" exact component={HomePage} />
-    <Route path="/play/:gameSize" component={GamePage} />
+    <div>
+      <Route path="/" exact component={HomePage} />
+      <Route path="/play/:gameSize" component={GamePage} />
+    </div>
   </Router>
 )
 

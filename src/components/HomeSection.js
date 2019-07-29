@@ -7,10 +7,9 @@ import { cellContent } from '../ticTacToeConstants';
 import PropTypes from 'prop-types';
 
 const decorativeBoardMatrix = [
-    [cellContent.x, cellContent.o, cellContent.empty, cellContent.x],
-    [cellContent.x, cellContent.empty, cellContent.o, cellContent.empty],
-    [cellContent.o, cellContent.empty, cellContent.empty, cellContent.o],
-    [cellContent.empty, cellContent.empty, cellContent.x, cellContent.o],
+    [cellContent.x, cellContent.o, cellContent.empty],
+    [cellContent.x, cellContent.empty, cellContent.o],
+    [cellContent.o, cellContent.empty, cellContent.empty],
 ];
 
 const SetuPageRoot = styled.div`
@@ -18,10 +17,10 @@ const SetuPageRoot = styled.div`
 `;
 
 const Menu = styled.div`
-  margin-left: ${p => p.variant === 'row' ? '2em' : '0'};
-  margin-top: ${p => p.variant === 'row' ? '0' : '1em'};
+  margin-left: ${p => p.direction === 'row' ? '2em' : '0'};
+  margin-top: ${p => p.direction === 'row' ? '0' : '1em'};
   display: flex;
-  justify-content: ${p => p.variant === 'row' ? 'initial' : 'center'};
+  justify-content: ${p => p.direction === 'row' ? 'initial' : 'center'};
 `;
 
 const StyledBoard = styled(Board)`
@@ -35,12 +34,12 @@ const PlayNowButton = styled(Fab)`
   }
 `
 
-const HomeSection = ({navigateToGame, className, variant}) => {  
+const HomeSection = ({navigateToGame, className, direction}) => {  
   const [dialogOpen, setDialogOpen] = useState(false);
   return (
     <SetuPageRoot className={className}>
       <StyledBoard matrix={decorativeBoardMatrix} />
-      <Menu variant={variant}>
+      <Menu direction={direction}>
         <PlayNowButton variant="extended" onClick={() => setDialogOpen(true)} color="primary">
           Play now
         </PlayNowButton>
@@ -55,7 +54,7 @@ const HomeSection = ({navigateToGame, className, variant}) => {
 HomeSection.propTypes = {
   className: PropTypes.string,
   navigateToGame: PropTypes.func.isRequired,
-  variant: PropTypes.oneOf(['row', 'col']),
+  direction: PropTypes.oneOf(['row', 'col']),
 }
 
 export default HomeSection;

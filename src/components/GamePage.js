@@ -61,7 +61,7 @@ const GamePage = ({match, history}) => {
         <ArrowBackIcon />
         <BackLinkText>Back to Home</BackLinkText>
       </BackLink>
-      <GameSection variant={gameSectionVariant} onRestart={({ gameSize }) => history.push(`/play/${gameSize}`)} />
+      <GameSection direction={gameSectionVariant} onRestart={({ gameSize }) => history.push(`/play/${gameSize}`)} />
     </Root>
   );
 }
