@@ -22,14 +22,14 @@ const Results = styled.div`
 
 const Result = styled(Typography)`
   && {
-    font-size: 1em;
+    font-size: 0.8em;
     margin-bottom: 0.5em;
   }
 `;
 
 const NextPlayer = styled(Typography)`
   && {
-    font-size: 1em;
+    font-size: 0.8em;
     margin-top: 1em;
     margin-bottom: 0.5em;
   }

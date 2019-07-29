@@ -16,8 +16,8 @@ const TableCell = styled.td`
   color: ${ ({children}) => children === 'X' ? '#c51162' : '#303f9f' }
 `;
 
-export const Board = ({matrix, onCellClick}) => (
-  <Table>
+export const Board = ({matrix, onCellClick, className}) => (
+  <Table className={className}>
     <tbody>
       {matrix.map((row, rowID) => (
         <tr key={rowID}>

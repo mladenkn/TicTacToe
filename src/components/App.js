@@ -4,8 +4,9 @@ import HomeSection from './HomeSection';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import GamePage from './GamePage';
 
-const HomeRoot = styled.div`
+const StyledHomeSection = styled(HomeSection)`
   padding: 30px;
+  font-size: 2em;
 `;
 
 const App = () => (
@@ -14,9 +15,7 @@ const App = () => (
         path="/" 
         exact 
         component={({ history }) => (
-          <HomeRoot>
-            <HomeSection navigateToGame={({ gameSize }) => history.push(`/play/${gameSize}`)} />
-          </HomeRoot>          
+          <StyledHomeSection navigateToGame={({ gameSize }) => history.push(`/play/${gameSize}`)} />
         )} 
       />
       <Route path="/play/:gameSize" component={GamePage} />

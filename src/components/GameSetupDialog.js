@@ -9,7 +9,7 @@ const GameSizePickRow = styled.div`
 `;
 
 const GameSizeHeading = styled(Typography)`
-
+  font-size: 1em;
 ;`
 
 const GameSizeInput = styled(Slider)`
@@ -18,12 +18,14 @@ const GameSizeInput = styled(Slider)`
 
 const StyledCancelButton = styled(Button)`
   && {
+    font-size: 1em;
     min-width: auto;
   }
 `;
 
 const StyledOKButton = styled(Button)`
   && {
+    font-size: 1em;
     min-width: auto;
   }
 `;

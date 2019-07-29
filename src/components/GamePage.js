@@ -11,7 +11,7 @@ import { homeUrl } from '../urls';
 
 const Root = styled.div`
   padding: 30px;
-  font-size: 0.9em;
+  font-size: 1.5em;
 `;
 
 const BackLink = styled(Link)`
@@ -28,7 +28,7 @@ const BackLink = styled(Link)`
 
 const BackLinkText = styled(Typography)`
   && {
-    margin-left: 0.5em;
+    margin-left: 2em;
     font-size: 1.05em;
   }
 `;

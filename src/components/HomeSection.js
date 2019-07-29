@@ -14,26 +14,32 @@ const decorativeBoardMatrix = [
 
 const SetuPageRoot = styled.div`
   display: flex;
-  display: flex;
 `;
 
 const Menu = styled.div`
   margin-left: 2em;
 `;
 
-const BoardContainer = styled.div`
-  font-size: 2.2em;
+const StyledBoard = styled(Board)`
+  font-size: 2.4em;
 `;
 
-const HomeSection = ({navigateToGame}) => {  
+const PlayNowButton = styled(Fab)`
+  && {
+    font-size: 1em;
+    height: 1.8em;
+  }
+`
+
+const HomeSection = ({navigateToGame, className}) => {  
   const [dialogOpen, setDialogOpen] = useState(false);
   return (
-    <SetuPageRoot>
-      <BoardContainer>
-        <Board matrix={decorativeBoardMatrix} isDecorative />
-      </BoardContainer>
+    <SetuPageRoot className={className}>
+      <StyledBoard matrix={decorativeBoardMatrix} />
       <Menu>
-        <Fab variant="extended" onClick={() => setDialogOpen(true)} color="primary">Play now</Fab>
+        <PlayNowButton variant="extended" onClick={() => setDialogOpen(true)} color="primary">
+          Play now
+        </PlayNowButton>
       </Menu>
       <Dialog open={dialogOpen}>
         <GameSetupDialog onAccept={navigateToGame} onCancel={() => setDialogOpen(false)} />
