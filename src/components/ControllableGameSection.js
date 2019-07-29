@@ -11,24 +11,21 @@ const MainContent = styled.div`
 
 export const ControllableGameSection = (({onRestart, className}) => {
 
-  const { noContent, playing, gameOverDialogOpen, onCloseDialog, round,
+  const { playing, gameOverDialogOpen, onCloseDialog, round,
     onMatrixCellClick, resultHistory, gameOverDialogClosed } = useLogic();
 
   const mainContent = (
     <MainContent className={className}>
       <GameSection 
         nextPlayer={round.nextPlayer} 
-        onCellClick={onMatrixCellClick}
+        onCellClick={e => playing && onMatrixCellClick(e)}
         matrix={round.matrix} 
         resultHistory={resultHistory} 
       />
     </MainContent>
   );
- 
-  if(noContent)
-    return <Fragment />;
 
-  else if(playing)
+  if(playing)
     return <Fragment>{mainContent}</Fragment>;
   
   else if(gameOverDialogOpen)

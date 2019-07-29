@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { newRound } from '../redux/modules/gameRounds';
 import { players } from '../ticTacToeConstants';
 import ControllableGameSection from './ControllableGameSection';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import { Link } from '../utils/components';
 import { homeUrl } from '../urls';
 
@@ -28,13 +28,19 @@ const BackLink = styled(Link)`
 
 const BackLinkText = styled(Typography)`
   && {
-    margin-left: 2em;
-    font-size: 1.05em;
+    margin-left: 0.7em;
+    font-size: 0.8em;
   }
 `;
 
 const GameSection = styled(ControllableGameSection)`
-  margin-left: 2.5em;
+  margin-left: 2.4em;
+`;
+
+const GlobalStyle = createGlobalStyle`
+  & .GameRestartDialog {
+    font-size: 1.15em;
+  }
 `;
 
 const GamePage = ({match, history}) => {
@@ -42,6 +48,7 @@ const GamePage = ({match, history}) => {
   useDispatch()(newRound(gameSize, players.x));
   return (
     <Root>
+      <GlobalStyle />
       <BackLink underline='none' to={homeUrl}>
         <ArrowBackIcon />
         <BackLinkText>Back to Home</BackLinkText>

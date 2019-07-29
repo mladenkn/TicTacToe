@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { Fragment } from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
 import HomeSection from './HomeSection';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import GamePage from './GamePage';
@@ -9,13 +9,22 @@ const StyledHomeSection = styled(HomeSection)`
   font-size: 2em;
 `;
 
+const GlobalStyle = createGlobalStyle`
+  & .GameSetupDialog {
+    font-size: 1.3em;
+  }
+`;
+
 const App = () => (
   <Router>
       <Route 
         path="/" 
         exact 
         component={({ history }) => (
-          <StyledHomeSection navigateToGame={({ gameSize }) => history.push(`/play/${gameSize}`)} />
+          <Fragment>
+            <GlobalStyle />
+            <StyledHomeSection navigateToGame={({ gameSize }) => history.push(`/play/${gameSize}`)} />
+          </Fragment>
         )} 
       />
       <Route path="/play/:gameSize" component={GamePage} />

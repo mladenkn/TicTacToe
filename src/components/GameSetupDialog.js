@@ -9,7 +9,9 @@ const GameSizePickRow = styled.div`
 `;
 
 const GameSizeHeading = styled(Typography)`
-  font-size: 1em;
+  && {
+    font-size: 1.15em;
+  }
 ;`
 
 const GameSizeInput = styled(Slider)`
@@ -18,14 +20,14 @@ const GameSizeInput = styled(Slider)`
 
 const StyledCancelButton = styled(Button)`
   && {
-    font-size: 1em;
+    font-size: 0.85em;
     min-width: auto;
   }
 `;
 
 const StyledOKButton = styled(Button)`
   && {
-    font-size: 1em;
+    font-size: 0.85em;
     min-width: auto;
   }
 `;
@@ -47,7 +49,7 @@ const GameSetupDialog = ({onAccept, onCancel, className}) => {
   const [gameSize, setGameSize] = useState(3)
 
   return (
-    <Root className={className}>
+    <Root className={'GameSetupDialog ' + className}>
       <GameSizePickRow>
         <GameSizeHeading gutterBottom variant='h6'>Pick Game Size:</GameSizeHeading>
         <GameSizeInput 
