@@ -1,4 +1,4 @@
-import { createMatrix, getMatrixCollumns, getMatrixDiagonals, updateMatrixCell } from ".";
+import { createMatrix, getMatrixCollumns, getMatrixDiagonals, updateMatrixCell } from "./matrix";
 
 test('createNullMatrix', () => {
   const run = (width, height) => {

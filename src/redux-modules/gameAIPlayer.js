@@ -1,4 +1,4 @@
-import { createMiddleware } from "../../utils/redux";
+import { createMiddleware } from "../utils/redux";
 import { selectAvailableCells } from './gameRound';
 
 export const middleware = (playerName) => createMiddleware((state, action, dispatch) => {

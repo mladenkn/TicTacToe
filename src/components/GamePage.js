@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, useMediaQuery } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useDispatch } from 'react-redux';
-import { newRound } from '../redux/modules/gameRounds';
+import { newRound } from '../redux-modules/gameRounds';
 import { players } from '../ticTacToeConstants';
 import ControllableGameSection from './ControllableGameSection';
 import styled, { createGlobalStyle } from 'styled-components';
@@ -18,7 +18,7 @@ const Root = styled.div`
   }
   font-size: 1.5em;
 `;
-
+ 
 const BackLink = styled(Link)`
   && {
     display: flex;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { selectResultHistory } from '../redux/modules/gameRounds';
-import { playerMove } from '../redux/modules/gameRound';
+import { selectResultHistory } from '../redux-modules/gameRounds';
+import { playerMove } from '../redux-modules/gameRound';
 import { useDispatch, useSelector } from 'react-redux';
 import { roundStatus } from '../ticTacToeConstants';
 

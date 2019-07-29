@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import GameRestartDialog from './GameRestartDialog';
 import { Dialog } from '@material-ui/core';
 import styled from 'styled-components';
-import useLogic from '../connectors/useGameLogic';
+import useLogic from '../redux-connectors/useGameLogic';
 
 const MainContent = styled.div`
 `;
@@ -13,7 +13,7 @@ export const ControllableGameSection = (({onRestart, className, direction}) => {
 
   const { playing, gameOverDialogOpen, onCloseDialog, round,
     onMatrixCellClick, resultHistory, gameOverDialogClosed } = useLogic();
-
+ 
   const mainContent = (
     <MainContent className={className}>
       <GameSection 

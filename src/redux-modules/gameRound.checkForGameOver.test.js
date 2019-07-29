@@ -1,5 +1,5 @@
 import { getStatus } from './gameRound';
-import { roundStatus, cellContent } from '../../ticTacToeConstants';
+import { roundStatus, cellContent } from '../ticTacToeConstants';
 
 describe('isGameover', () => {
 
