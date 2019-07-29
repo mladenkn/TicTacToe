@@ -20,7 +20,7 @@ export const reducer = (state = {current: undefined, history: []}, action = {}) 
       let history = state.history;
       if(current.status && current.status !== roundStatus.playing)
         history = history.concat(current);
-      return {...state, history, current };
+      return {...state, history, current };selectResultHistory
     }
   }
 }
@@ -33,9 +33,9 @@ export const selectResultHistory = (stateHistory) => {
   let matrixFullCount = 0;
 
   stateHistory.forEach(s => {
-    if(s.winner === players.x)
+    if(s.status === roundStatus.xWin)
       xWinCount++;
-    else if(s.winner === players.o)
+    else if(s.status === roundStatus.oWin)
       oWinCount++;
     else
       matrixFullCount++;
