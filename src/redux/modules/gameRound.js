@@ -46,3 +46,7 @@ export const getStatus = matrix => {
   const isMatrixFull = flatten(matrix).every(c => c !== cellContent.emptyCell);
   return isMatrixFull ? roundStatus.matrixFull : roundStatus.playing;
 }
+
+export const selectAvailableCells = state => {
+
+}

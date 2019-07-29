@@ -23,7 +23,7 @@ export const Board = ({matrix, onCellClick}) => (
         <tr key={rowID}>
           {row.map((content, collumnID) => (
             <TableCell 
-              onClick={() => onCellClick({row: rowID, col: collumnID})} 
+              onClick={() => onCellClick && onCellClick({row: rowID, col: collumnID})} 
               key={`${row}.${collumnID}`}
             >
               {content}
@@ -37,7 +37,6 @@ export const Board = ({matrix, onCellClick}) => (
 
 Board.propTypes = {
   matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
-  isDecorative: PropTypes.bool,
   onCellClick: PropTypes.func,
 }
 

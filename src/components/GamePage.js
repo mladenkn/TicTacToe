@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useDispatch } from 'react-redux';
 import { newRound } from '../redux/modules/gameRounds';
@@ -14,7 +14,7 @@ const Root = styled.div`
   font-size: 0.9em;
 `;
 
-const BackButton = styled(Link)`
+const BackLink = styled(Link)`
   && {
     display: flex;
     padding: 0.5em;
@@ -26,7 +26,7 @@ const BackButton = styled(Link)`
   }
 `;
 
-const BackButtonText = styled(Typography)`
+const BackLinkText = styled(Typography)`
   && {
     margin-left: 0.5em;
     font-size: 1.05em;
@@ -42,10 +42,10 @@ const GamePage = ({match, history}) => {
   useDispatch()(newRound(gameSize, players.x));
   return (
     <Root>
-      <BackButton underline='none' to={homeUrl}>
+      <BackLink underline='none' to={homeUrl}>
         <ArrowBackIcon />
-        <BackButtonText>Back to Home</BackButtonText>
-      </BackButton>
+        <BackLinkText>Back to Home</BackLinkText>
+      </BackLink>
       <GameSection onRestart={({ gameSize }) => history.push(`/play/${gameSize}`)} />
     </Root>
   );
