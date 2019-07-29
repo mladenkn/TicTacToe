@@ -35,8 +35,8 @@ const NextPlayer = styled(Typography)`
   }
 `;
 
-const GameSection = ({matrix, resultHistory, onCellClick, nextPlayer}) => (
-  <Root>
+const GameSection = ({className, matrix, resultHistory, onCellClick, nextPlayer}) => (
+  <Root className={className}>
     <LeftSection>
       <Board onCellClick={onCellClick} matrix={matrix} />
     </LeftSection>
@@ -52,14 +52,15 @@ const GameSection = ({matrix, resultHistory, onCellClick, nextPlayer}) => (
 );
 
 GameSection.propTypes = {
-  matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  className: PropTypes.string,
+  matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
   resultHistory: PropTypes.shape({
     xWins: PropTypes.number,
     oWins: PropTypes.number,
     matrixFullCount: PropTypes.number,
-  }),
+  }).isRequired,
   onCellClick: PropTypes.func,
-  nextPlayer: PropTypes.string,
+  nextPlayer: PropTypes.string.isRequired,
 }
 
 export default GameSection;

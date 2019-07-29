@@ -36,7 +36,8 @@ export const Board = ({matrix, onCellClick, className}) => (
 )
 
 Board.propTypes = {
-  matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  className: PropTypes.string,
+  matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)).isRequired,
   onCellClick: PropTypes.func,
 }
 

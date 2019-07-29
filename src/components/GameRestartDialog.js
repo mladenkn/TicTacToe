@@ -66,9 +66,10 @@ const GameRestartDialog = ({status, onAccept, onCancel, className}) => {
 };
 
 GameRestartDialog.propTypes = {
-  status: PropTypes.string,
-  onAccept: PropTypes.func,
-  onCancel: PropTypes.func,
+  className: PropTypes.string,
+  status: PropTypes.string.isRequired,
+  onAccept: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
 };
 
 export default GameRestartDialog;

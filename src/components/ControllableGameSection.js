@@ -50,8 +50,8 @@ export const ControllableGameSection = (({onRestart, className}) => {
 });
 
 ControllableGameSection.propTypes = {
-  gameSize: PropTypes.number,
-  onRestart: PropTypes.func,
+  onRestart: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 export default ControllableGameSection;

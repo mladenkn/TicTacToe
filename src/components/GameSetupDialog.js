@@ -70,8 +70,9 @@ const GameSetupDialog = ({onAccept, onCancel, className}) => {
 };
 
 GameSetupDialog.propTypes = {
-  onAccept: PropTypes.func,
-  onCancel: PropTypes.func
+  className: PropTypes.string,
+  onAccept: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
 }
 
 export default GameSetupDialog;

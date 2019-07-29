@@ -4,6 +4,7 @@ import Board from './Board';
 import { Fab, Dialog } from '@material-ui/core';
 import GameSetupDialog from './GameSetupDialog'
 import { cellContent } from '../ticTacToeConstants';
+import PropTypes from 'prop-types';
 
 const decorativeBoardMatrix = [
     [cellContent.x, cellContent.o, cellContent.empty, cellContent.x],
@@ -46,6 +47,11 @@ const HomeSection = ({navigateToGame, className}) => {
       </Dialog>
     </SetuPageRoot>
   );
+}
+
+HomeSection.propTypes = {
+  className: PropTypes.string,
+  navigateToGame: PropTypes.func.isRequired,
 }
 
 export default HomeSection;
