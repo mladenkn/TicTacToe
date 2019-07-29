@@ -18,7 +18,10 @@ const SetuPageRoot = styled.div`
 `;
 
 const Menu = styled.div`
-  margin-left: 2em;
+  margin-left: ${p => p.variant === 'row' ? '2em' : '0'};
+  margin-top: ${p => p.variant === 'row' ? '0' : '1em'};
+  display: flex;
+  justify-content: ${p => p.variant === 'row' ? 'initial' : 'center'};
 `;
 
 const StyledBoard = styled(Board)`
@@ -32,12 +35,12 @@ const PlayNowButton = styled(Fab)`
   }
 `
 
-const HomeSection = ({navigateToGame, className}) => {  
+const HomeSection = ({navigateToGame, className, variant}) => {  
   const [dialogOpen, setDialogOpen] = useState(false);
   return (
     <SetuPageRoot className={className}>
       <StyledBoard matrix={decorativeBoardMatrix} />
-      <Menu>
+      <Menu variant={variant}>
         <PlayNowButton variant="extended" onClick={() => setDialogOpen(true)} color="primary">
           Play now
         </PlayNowButton>
@@ -52,6 +55,7 @@ const HomeSection = ({navigateToGame, className}) => {
 HomeSection.propTypes = {
   className: PropTypes.string,
   navigateToGame: PropTypes.func.isRequired,
+  variant: PropTypes.oneOf(['row', 'col']),
 }
 
 export default HomeSection;
