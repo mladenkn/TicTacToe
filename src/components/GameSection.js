@@ -42,9 +42,9 @@ const GameSection = ({matrix, resultHistory, onCellClick, nextPlayer}) => (
     </LeftSection>
     <RightSection>
       <Results>
-        <Result>X wins: {resultHistory.xWins}</Result>
-        <Result>O wins: {resultHistory.oWins}</Result>
-        <Result>Draws: {resultHistory.draws}</Result>
+        <Result>X wins: {resultHistory.xWinCount}</Result>
+        <Result>O wins: {resultHistory.oWinCount}</Result>
+        <Result>Draws: {resultHistory.matrixFullCount}</Result>
         <NextPlayer>Next player: {nextPlayer}</NextPlayer>
       </Results>
     </RightSection>
@@ -56,7 +56,7 @@ GameSection.propTypes = {
   resultHistory: PropTypes.shape({
     xWins: PropTypes.number,
     oWins: PropTypes.number,
-    draws: PropTypes.number,
+    matrixFullCount: PropTypes.number,
   }),
   onCellClick: PropTypes.func,
   nextPlayer: PropTypes.string,
