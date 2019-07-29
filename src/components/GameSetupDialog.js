@@ -57,7 +57,7 @@ const GameSetupDialog = ({onAccept, onCancel, className}) => {
           valueLabelDisplay="on" 
           onChangeCommitted={(_, v) => setGameSize(v)} 
           min={2} 
-          max={7} 
+          max={6} 
           step={1} 
         />
       </GameSizePickRow>

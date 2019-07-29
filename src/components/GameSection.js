@@ -4,20 +4,23 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Typography } from '@material-ui/core';
 
-const LeftSection = styled.div`
+const BoardContainer = styled.div`
   font-size: 2.2em;
+  display: flex;
+  justify-content: ${p => p.variant === 'row' ? 'initial' : 'center'};
 `;
 
 const Root = styled.div`
-  display: flex;  
+  display: flex;
+  flex-direction: ${p => p.variant === 'row' ? 'row' : 'column'};
 `;
 
-const RightSection = styled.div`
-  margin-left: 2em;
-`;
-
-const Results = styled.div`
-
+const StatsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: ${p => p.variant === 'row' ? '2em' : '0'};
+  margin-top: ${p => p.variant === 'row' ? '0' : '1em'};
+  align-items: ${p => p.variant === 'row' ? 'initial' : 'center'};
 `;
 
 const Result = styled(Typography)`
@@ -35,19 +38,17 @@ const NextPlayer = styled(Typography)`
   }
 `;
 
-const GameSection = ({className, matrix, resultHistory, onCellClick, nextPlayer}) => (
-  <Root className={className}>
-    <LeftSection>
+const GameSection = ({className, matrix, resultHistory, onCellClick, nextPlayer, variant}) => (
+  <Root className={className} variant={variant}>
+    <BoardContainer>
       <Board onCellClick={onCellClick} matrix={matrix} />
-    </LeftSection>
-    <RightSection>
-      <Results>
-        <Result>X wins: {resultHistory.xWinCount}</Result>
-        <Result>O wins: {resultHistory.oWinCount}</Result>
-        <Result>Draws: {resultHistory.matrixFullCount}</Result>
-        <NextPlayer>Next player: {nextPlayer}</NextPlayer>
-      </Results>
-    </RightSection>
+    </BoardContainer>
+    <StatsContainer variant={variant}>
+      <Result>X wins: {resultHistory.xWinCount}</Result>
+      <Result>O wins: {resultHistory.oWinCount}</Result>
+      <Result>Draws: {resultHistory.matrixFullCount}</Result>
+      <NextPlayer>Next player: {nextPlayer}</NextPlayer>
+    </StatsContainer>
   </Root>
 );
 
@@ -61,6 +62,7 @@ GameSection.propTypes = {
   }).isRequired,
   onCellClick: PropTypes.func,
   nextPlayer: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf(['row', 'col']),
 }
 
 export default GameSection;

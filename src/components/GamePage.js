@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, useMediaQuery } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { useDispatch } from 'react-redux';
 import { newRound } from '../redux/modules/gameRounds';
@@ -10,7 +10,12 @@ import { Link } from '../utils/components';
 import { homeUrl } from '../urls';
 
 const Root = styled.div`
-  padding: 30px;
+  @media(max-width: 576px) {
+    padding: 0.5em;
+  }
+  @media(min-width: 576px) {
+    padding: 1.5em;
+  }
   font-size: 1.5em;
 `;
 
@@ -34,7 +39,9 @@ const BackLinkText = styled(Typography)`
 `;
 
 const GameSection = styled(ControllableGameSection)`
-  margin-left: 2.4em;
+  @media(min-width: 576px) {
+    margin-left: 2em;
+  }
 `;
 
 const GlobalStyle = createGlobalStyle`
@@ -46,6 +53,7 @@ const GlobalStyle = createGlobalStyle`
 const GamePage = ({match, history}) => {
   const gameSize = parseInt(match.params.gameSize);
   useDispatch()(newRound(gameSize, players.x));
+  const gameSectionVariant = useMediaQuery('(max-width: 576px)') && gameSize > 2 ? 'col' : 'row';
   return (
     <Root>
       <GlobalStyle />
@@ -53,7 +61,7 @@ const GamePage = ({match, history}) => {
         <ArrowBackIcon />
         <BackLinkText>Back to Home</BackLinkText>
       </BackLink>
-      <GameSection onRestart={({ gameSize }) => history.push(`/play/${gameSize}`)} />
+      <GameSection variant={gameSectionVariant} onRestart={({ gameSize }) => history.push(`/play/${gameSize}`)} />
     </Root>
   );
 }
