@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import GameRestartDialog from './GameRestartDialog';
 import { Dialog } from '@material-ui/core';
 import styled from 'styled-components';
-import { players, roundStatus, cellContent } from '../ticTacToeConstants';
+import { roundStatus, cellContent } from '../ticTacToeConstants';
 
 const MainContent = styled.div`
 `;
@@ -13,7 +13,7 @@ export const ControllableGameSection = (({onRestart, className, width, gameLogic
 
   const { playing, gameOverDialogOpen, onCloseDialog, matrix, roundStatus, isUsersTurn,
     onMatrixCellClick, resultHistory, gameOverDialogClosed } = gameLogic;
- 
+
   const mainContent = (
     <MainContent className={className}>
       <GameSection 
