@@ -1,5 +1,4 @@
-import { update } from "ramda";
-import { range } from '.';
+import { update, range } from "ramda";
 
 export const createMatrix = (width, height, value) => {
   const r = [];

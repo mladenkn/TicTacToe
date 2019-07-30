@@ -1,6 +1,6 @@
 import { getMatrixDiagonals, updateMatrixCell, createMatrix, getMatrixCollumns } from "../utils/matrix";
 import { allElementsAreEqual } from "../utils";
-import flatten from 'flatten';
+import { flatten } from 'ramda';
 import { players, cellContent, roundStatus } from '../ticTacToeConstants';
 
 const PLAYER_MOVE = 'tic-tac-toe-round/PLAYER_MOVE';
