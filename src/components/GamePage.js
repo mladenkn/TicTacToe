@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react';
 import { Typography, useMediaQuery } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import { useDispatch, useSelector } from 'react-redux';
-import { newRound } from '../redux-modules/gameRounds';
 import ControllableGameSection from './ControllableGameSection';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Link } from '../utils/components';
 import { homeUrl } from '../urls';
 import { withGameLogic } from '../redux-connectors/useGameLogic';
-import { useState } from 'react';
-import { isNil } from 'ramda';
+import useGameInitLogic from '../redux-connectors/useGameInitLogic';
 
 const Root = styled.div`
   @media(max-width: 576px) {
@@ -52,22 +49,14 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const useGameInitLogic = ({gameSize, firstPlayer}) => {  
-  const dispatch = useDispatch();
-  const inited = useSelector(s => !isNil(s.gameRounds.current));  
-  const init = () => dispatch(newRound(gameSize, firstPlayer)); 
-  return { inited, init };
-}
-
 const ConnectedGameSection = withGameLogic(GameSection);
 
 const GamePage = ({match, history}) => {  
-  const gameSectionVariant = useMediaQuery('(max-width: 576px)') && gameSize > 2 ? 'small' : 'medium';
-
   const gameSize = parseInt(match.params.gameSize);
   const firstPlayer = match.params.firstPlayer.toUpperCase();
   const initLogic = useGameInitLogic({gameSize, firstPlayer});
   useEffect(() => { initLogic.init() });
+  const width = useMediaQuery('(max-width: 576px)') && gameSize > 2 ? 'small' : 'medium';
 
   return ( 
     initLogic.inited &&
@@ -78,7 +67,7 @@ const GamePage = ({match, history}) => {
         <BackLinkText>Back to Home</BackLinkText>
       </BackLink>
       <ConnectedGameSection 
-        width={gameSectionVariant} 
+        width={width} 
         onRestart={({ gameSize, firstPlayer }) => history.push(`/play/${gameSize}/${firstPlayer}`)}
       />
     </Root>

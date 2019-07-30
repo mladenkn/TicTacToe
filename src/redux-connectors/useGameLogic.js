@@ -7,7 +7,7 @@ import { roundStatus } from '../ticTacToeConstants';
 
 export const useGameLogic = () => {
   
-  const { current: currentRound, history } = useSelector(s => s.gameRounds);  
+  const {current: currentRound, history} = useSelector(s => s.gameRounds);  
   const resultHistory = selectResultHistory(history);
   
   const dispatch = useDispatch();
@@ -22,6 +22,8 @@ export const useGameLogic = () => {
     gameOverDialogOpen: !playing && !userClosedDialog,
     gameOverDialogClosed: userClosedDialog,
     onCloseDialog: () => setUserClosedDialog(true),
+    matrix: currentRound.matrix,
+    roundStatus: currentRound.status,
     round: currentRound,
     onMatrixCellClick: onCellClick,
     resultHistory,
@@ -29,4 +31,4 @@ export const useGameLogic = () => {
 }
 
 export const withGameLogic = (Component) => (otherProps) => 
-  <Component {...otherProps} gameLogic={useGameLogic()} />
+  <Component gameLogic={useGameLogic()} {...otherProps} />

@@ -35,3 +35,17 @@ export const updateMatrixCell = (matrix, pos, value) =>
     else
       return row;
   })
+
+export const filterMatrixCells = (matrix, filter) => {
+  const r = [];
+  for (let curRowIndex = 0; curRowIndex < matrix.length; curRowIndex++) {
+    const row = matrix[curRowIndex];
+    for (let curColIndex = 0; curColIndex < row.length; curColIndex++) {
+      const value = row[curColIndex];
+      const cell = {row: curRowIndex, col: curColIndex, value};
+      if(filter(cell))
+        r.push(cell)      
+    }
+  }
+  return r;
+}

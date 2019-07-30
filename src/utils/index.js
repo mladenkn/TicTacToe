@@ -1,5 +1,3 @@
-
- 
 export const allElementsAreEqual = (array) => array.every(e => e === array[0])
 
 export const range = (lowerBound, upperBound) => {
@@ -8,3 +6,5 @@ export const range = (lowerBound, upperBound) => {
     r.push(i);
   return r;
 }
+
+export const randomArrayElement = arr => arr[~~(arr.length * Math.random())];

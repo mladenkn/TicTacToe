@@ -1,4 +1,4 @@
-import { createMatrix, getMatrixCollumns, getMatrixDiagonals, updateMatrixCell } from "./matrix";
+import { createMatrix, getMatrixCollumns, getMatrixDiagonals, updateMatrixCell, filterMatrixCells } from "./matrix";
 
 test('createNullMatrix', () => {
   const run = (width, height) => {
@@ -49,3 +49,19 @@ test('update matrix cell', () => {
   expect(updatedMatrix[1]).toEqual([0, newValue, 0]);
   expect(updatedMatrix[2]).toEqual([5, 0, 3]);
 }); 
+
+test('filterMatrixCells', () => {
+  const matrix = [
+    [1, 0, 4],
+    [0, 2, 0],
+    [5, 0, 3],
+  ];
+  const mapped = filterMatrixCells(matrix, cell => cell.value !== 0);  
+  expect(mapped).toEqual([
+    {row: 0, col: 0, value: 1},
+    {row: 0, col: 2, value: 4},
+    {row: 1, col: 1, value: 2},
+    {row: 2, col: 0, value: 5},
+    {row: 2, col: 2, value: 3},
+  ]);
+});

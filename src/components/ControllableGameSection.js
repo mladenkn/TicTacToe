@@ -11,15 +11,14 @@ const MainContent = styled.div`
 
 export const ControllableGameSection = (({onRestart, className, width, gameLogic}) => {
 
-  const { playing, gameOverDialogOpen, onCloseDialog, round,
+  const { playing, gameOverDialogOpen, onCloseDialog, matrix, roundStatus,
     onMatrixCellClick, resultHistory, gameOverDialogClosed } = gameLogic;
  
   const mainContent = (
     <MainContent className={className}>
       <GameSection 
-        nextPlayer={round.nextPlayer} 
         onCellClick={e => playing && onMatrixCellClick(e)}
-        matrix={round.matrix} 
+        matrix={matrix} 
         resultHistory={resultHistory} 
         width={width}
       />
@@ -37,7 +36,7 @@ export const ControllableGameSection = (({onRestart, className, width, gameLogic
           <GameRestartDialog 
             onCancel={onCloseDialog}
             onAccept={onRestart}
-            status={round.status}
+            status={roundStatus}
           />
         </Dialog> 
       </Fragment>
@@ -59,11 +58,8 @@ ControllableGameSection.propTypes = {
     gameOverDialogOpen: PropTypes.bool,
     gameOverDialogClosed: PropTypes.bool,
     onCloseDialog: PropTypes.func.isRequired,
-    round: PropTypes.shape({
-      matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.oneOf(Object.values(cellContent)))),
-      status: PropTypes.oneOf(Object.values(roundStatus)),
-      nextPlayer: PropTypes.oneOf(Object.values(players)),
-    }),
+    matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.oneOf(Object.values(cellContent)))),
+    roundStatus: PropTypes.oneOf(Object.values(roundStatus)),
     onMatrixCellClick: PropTypes.func.isRequired,
     resultHistory: PropTypes.shape({
       xWinCount: PropTypes.number,

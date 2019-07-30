@@ -7,3 +7,6 @@ const createRefRouterLink = (url) => React.forwardRef((props, ref) => (
 ));
 
 export const Link = (p) => <MuiLink {...p} component={createRefRouterLink(p.href)} />
+
+export const withInjected = (injectedProps) => (Component) => (otherProps) => 
+  <Component {...injectedProps} {...otherProps} />

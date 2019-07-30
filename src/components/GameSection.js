@@ -30,15 +30,7 @@ const Result = styled(Typography)`
   }
 `;
 
-const NextPlayer = styled(Typography)`
-  && {
-    font-size: 0.8em;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-  }
-`;
-
-const GameSection = ({className, matrix, resultHistory, onCellClick, nextPlayer, width}) => (
+const GameSection = ({className, matrix, resultHistory, onCellClick, width}) => (
   <Root className={className} width={width}>
     <BoardContainer>
       <Board onCellClick={onCellClick} matrix={matrix} />
@@ -47,7 +39,6 @@ const GameSection = ({className, matrix, resultHistory, onCellClick, nextPlayer,
       <Result>X wins: {resultHistory.xWinCount}</Result>
       <Result>O wins: {resultHistory.oWinCount}</Result>
       <Result>Draws: {resultHistory.matrixFullCount}</Result>
-      <NextPlayer>Next player: {nextPlayer}</NextPlayer>
     </StatsContainer>
   </Root>
 );
