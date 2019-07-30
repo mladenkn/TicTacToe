@@ -46,13 +46,23 @@ const Root = styled.div`
   overflow-x: hidden;
 `;
 
-const MatrixContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  font-size: 1em;
-  height: 9em;
-  align-items: center;
-`
+const StyledBoard = styled(Board)`
+  && {
+    display: flex;
+    justify-content: center;
+    font-size: 1em;
+    height: 9em;
+    align-items: center;
+  }
+`;
+
+const GameSizeText = styled(Typography)`
+  && {
+    text-align: center;
+    font-size: 1.07em;
+    margin-top: 1em;
+  }
+`;
 
 const GameSetupDialog = ({onAccept, onCancel, className}) => {
 
@@ -72,9 +82,8 @@ const GameSetupDialog = ({onAccept, onCancel, className}) => {
           step={1} 
         />
       </GameSizePickRow>
-      <MatrixContainer>
-        <Board matrix={matrix} />
-      </MatrixContainer>
+      <GameSizeText>{gameSize} x {gameSize}</GameSizeText>
+      <StyledBoard matrix={matrix} />
       <ActionsRow>
         <StyledCancelButton onClick={onCancel} color='secondary'>Cancel</StyledCancelButton>
         <StyledOKButton onClick={() => onAccept({gameSize})} color='primary'>OK</StyledOKButton>
