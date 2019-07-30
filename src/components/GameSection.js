@@ -52,7 +52,6 @@ GameSection.propTypes = {
     matrixFullCount: PropTypes.number,
   }).isRequired,
   onCellClick: PropTypes.func,
-  nextPlayer: PropTypes.string.isRequired,
   width: PropTypes.oneOf(['small', 'medium']),
 }
 

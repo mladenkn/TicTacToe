@@ -5,7 +5,7 @@ import ControllableGameSection from './ControllableGameSection';
 import styled, { createGlobalStyle } from 'styled-components';
 import { Link } from '../utils/components';
 import { homeUrl } from '../urls';
-import { withGameLogic } from '../redux-connectors/useGameLogic';
+import { withGameWithAILogic } from '../redux-connectors/useGameWithAILogic';
 import useGameInitLogic from '../redux-connectors/useGameInitLogic';
 
 const Root = styled.div`
@@ -48,8 +48,8 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.15em;
   }
 `;
-
-const ConnectedGameSection = withGameLogic(GameSection);
+ 
+const ConnectedGameSection = withGameWithAILogic('gameLogic')(GameSection);
 
 const GamePage = ({match, history}) => {  
   const gameSize = parseInt(match.params.gameSize);

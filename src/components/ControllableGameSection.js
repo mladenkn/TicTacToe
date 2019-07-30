@@ -11,13 +11,13 @@ const MainContent = styled.div`
 
 export const ControllableGameSection = (({onRestart, className, width, gameLogic}) => {
 
-  const { playing, gameOverDialogOpen, onCloseDialog, matrix, roundStatus,
+  const { playing, gameOverDialogOpen, onCloseDialog, matrix, roundStatus, isUsersTurn,
     onMatrixCellClick, resultHistory, gameOverDialogClosed } = gameLogic;
  
   const mainContent = (
     <MainContent className={className}>
       <GameSection 
-        onCellClick={e => playing && onMatrixCellClick(e)}
+        onCellClick={e => playing && isUsersTurn && onMatrixCellClick(e)}
         matrix={matrix} 
         resultHistory={resultHistory} 
         width={width}
@@ -61,6 +61,7 @@ ControllableGameSection.propTypes = {
     matrix: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.oneOf(Object.values(cellContent)))),
     roundStatus: PropTypes.oneOf(Object.values(roundStatus)),
     onMatrixCellClick: PropTypes.func.isRequired,
+    isUsersTurn: PropTypes.bool,
     resultHistory: PropTypes.shape({
       xWinCount: PropTypes.number,
       oWinCount: PropTypes.number,
