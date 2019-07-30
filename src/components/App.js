@@ -28,7 +28,7 @@ const App = () => (
   <Router>
     <GlobalStyle />
     <Route path="/" exact component={HomePage} />
-    <Route path="/play/:gameSize" component={GamePage} />
+    <Route path="/play/:gameSize/:firstPlayer" component={GamePage} />
   </Router>
 )
 

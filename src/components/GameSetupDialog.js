@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import Board from './Board';
 import { createMatrix } from '../utils/matrix';
+import { players } from '../ticTacToeConstants';
 
 const GameSizePickRow = styled.div`
   width: 12em;
@@ -86,7 +87,7 @@ const GameSetupDialog = ({onAccept, onCancel, className}) => {
       <StyledBoard matrix={matrix} />
       <ActionsRow>
         <StyledCancelButton onClick={onCancel} color='secondary'>Cancel</StyledCancelButton>
-        <StyledOKButton onClick={() => onAccept({gameSize})} color='primary'>OK</StyledOKButton>
+        <StyledOKButton onClick={() => onAccept({gameSize, firstPlayer: players.x})} color='primary'>OK</StyledOKButton>
       </ActionsRow>
     </Root>
   );

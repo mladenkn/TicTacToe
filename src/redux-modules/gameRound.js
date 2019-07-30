@@ -9,7 +9,7 @@ const INITIALIZE = 'tic-tac-toe-round/INITIALIZE';
 export const initialize = (gameSize, firstPlayer) => ({ type: INITIALIZE, payload: {gameSize, firstPlayer} });
 export const playerMove = (row, col) => ({ type: PLAYER_MOVE, payload: {row, col} });
 
-export const reducer = (state = {}, action = {}) => {
+export const reducer = (state = null, action = {}) => {
   switch (action.type) {
 
     case INITIALIZE:

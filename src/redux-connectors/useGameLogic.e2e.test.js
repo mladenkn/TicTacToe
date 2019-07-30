@@ -2,7 +2,7 @@ import React from 'react';
 import { configureStore } from 'redux-starter-kit'
 import gameRounds, { newRound } from '../redux-modules/gameRounds';
 import { Provider } from 'react-redux';
-import useGameLogic from './useGameLogic';
+import { useGameLogic } from './useGameLogic';
 import { renderHook, act } from '@testing-library/react-hooks'
 import { players, roundStatus } from '../ticTacToeConstants';
 

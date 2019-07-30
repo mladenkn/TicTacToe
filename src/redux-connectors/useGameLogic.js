@@ -1,10 +1,11 @@
+import React from 'react';
 import { useState } from 'react';
 import { selectResultHistory } from '../redux-modules/gameRounds';
 import { playerMove } from '../redux-modules/gameRound';
 import { useDispatch, useSelector } from 'react-redux';
 import { roundStatus } from '../ticTacToeConstants';
 
-export default () => {
+export const useGameLogic = () => {
   
   const { current: currentRound, history } = useSelector(s => s.gameRounds);  
   const resultHistory = selectResultHistory(history);
@@ -26,3 +27,6 @@ export default () => {
     resultHistory,
   };
 }
+
+export const withGameLogic = (Component) => (otherProps) => 
+  <Component {...otherProps} gameLogic={useGameLogic()} />

@@ -1,5 +1,6 @@
 import { roundStatus } from '../ticTacToeConstants';
 import * as singleRound from './gameRound';
+import { isNil } from 'ramda';
 
 const NEW_ROUND = 'tic-tac-toe-rounds/NEW_ROUND';
 
@@ -17,6 +18,8 @@ export const reducer = (state = {current: undefined, history: []}, action = {}) 
     
     default: {
       const current = singleRound.reducer(state.current, action);
+      if(isNil(current))
+        return state;
       let history = state.history;
       if(current.status && current.status !== roundStatus.playing)
         history = history.concat(current);
