@@ -10,7 +10,7 @@ export const stateChangeSubscriber = (state, dispatch) => {
   if(state.gameRounds.current.status === roundStatus.playing &&
     state.gameRounds.current.nextPlayer === state.gameAIPlayer.playerName){
     const nextMoveCoords = decideNextMove(state.gameRounds.current.matrix);
-    setTimeout(() => dispatch(playerMove(nextMoveCoords.row, nextMoveCoords.col)), 2000)
+    setTimeout(() => dispatch(playerMove(nextMoveCoords.row, nextMoveCoords.col)), 300)
   }
 }
 
