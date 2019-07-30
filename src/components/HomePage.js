@@ -21,12 +21,12 @@ const GlobalStyle = createGlobalStyle`
 
 const HomePage = ({ history }) => 
 {
-  const homeSectionVariant = useMediaQuery('(max-width: 576px)') ? 'col' : 'row';
+  const homeSectionVariant = useMediaQuery('(max-width: 576px)') ? 'small' : 'medium';
   return (
     <Fragment>
       <GlobalStyle />
       <StyledHomeSection
-        direction={homeSectionVariant}
+        width={homeSectionVariant}
         navigateToGame={({ gameSize }) => history.push(`/play/${gameSize}`)}
       />
     </Fragment>

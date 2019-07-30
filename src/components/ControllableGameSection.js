@@ -9,7 +9,7 @@ import useLogic from '../redux-connectors/useGameLogic';
 const MainContent = styled.div`
 `;
 
-export const ControllableGameSection = (({onRestart, className, direction}) => {
+export const ControllableGameSection = (({onRestart, className, width}) => {
 
   const { playing, gameOverDialogOpen, onCloseDialog, round,
     onMatrixCellClick, resultHistory, gameOverDialogClosed } = useLogic();
@@ -21,7 +21,7 @@ export const ControllableGameSection = (({onRestart, className, direction}) => {
         onCellClick={e => playing && onMatrixCellClick(e)}
         matrix={round.matrix} 
         resultHistory={resultHistory} 
-        direction={direction}
+        width={width}
       />
     </MainContent>
   );
@@ -53,7 +53,7 @@ export const ControllableGameSection = (({onRestart, className, direction}) => {
 ControllableGameSection.propTypes = {
   onRestart: PropTypes.func.isRequired,
   className: PropTypes.string,
-  direction: PropTypes.oneOf(['row', 'col']),
+  width: PropTypes.oneOf(['small', 'medium']),
 };
 
 export default ControllableGameSection;

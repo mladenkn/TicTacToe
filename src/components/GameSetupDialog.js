@@ -62,7 +62,7 @@ const GameSetupDialog = ({onAccept, onCancel, className}) => {
   return (
     <Root className={'GameSetupDialog ' + className}>
       <GameSizePickRow>
-        <GameSizeHeading gutterBottom direction='h6'>Pick Game Size:</GameSizeHeading>
+        <GameSizeHeading gutterBottom width='h6'>Pick Game Size:</GameSizeHeading>
         <GameSizeInput 
           value={gameSize}
           valueLabelDisplay="on" 

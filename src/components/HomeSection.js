@@ -17,10 +17,10 @@ const SetuPageRoot = styled.div`
 `;
 
 const Menu = styled.div`
-  margin-left: ${p => p.direction === 'row' ? '2em' : '0'};
-  margin-top: ${p => p.direction === 'row' ? '0' : '1em'};
+  margin-left: ${p => p.width === 'medium' ? '2em' : '0'};
+  margin-top: ${p => p.width === 'medium' ? '0' : '1em'};
   display: flex;
-  justify-content: ${p => p.direction === 'row' ? 'initial' : 'center'};
+  justify-content: ${p => p.width === 'medium' ? 'initial' : 'center'};
 `;
 
 const StyledBoard = styled(Board)`
@@ -34,12 +34,12 @@ const PlayNowButton = styled(Fab)`
   }
 `
 
-const HomeSection = ({navigateToGame, className, direction}) => {  
+const HomeSection = ({navigateToGame, className, width}) => {  
   const [dialogOpen, setDialogOpen] = useState(false);
   return (
     <SetuPageRoot className={className}>
       <StyledBoard matrix={decorativeBoardMatrix} />
-      <Menu direction={direction}>
+      <Menu width={width}>
         <PlayNowButton variant="extended" onClick={() => setDialogOpen(true)} color="primary">
           Play now
         </PlayNowButton>
@@ -54,7 +54,7 @@ const HomeSection = ({navigateToGame, className, direction}) => {
 HomeSection.propTypes = {
   className: PropTypes.string,
   navigateToGame: PropTypes.func.isRequired,
-  direction: PropTypes.oneOf(['row', 'col']),
+  width: PropTypes.oneOf(['small', 'medium']),
 }
 
 export default HomeSection;

@@ -53,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
 const GamePage = ({match, history}) => {
   const gameSize = parseInt(match.params.gameSize);
   useDispatch()(newRound(gameSize, players.x));
-  const gameSectionVariant = useMediaQuery('(max-width: 576px)') && gameSize > 2 ? 'col' : 'row';
+  const gameSectionVariant = useMediaQuery('(max-width: 576px)') && gameSize > 2 ? 'small' : 'medium';
   return (
     <Root>
       <GlobalStyle />
@@ -61,7 +61,7 @@ const GamePage = ({match, history}) => {
         <ArrowBackIcon />
         <BackLinkText>Back to Home</BackLinkText>
       </BackLink>
-      <GameSection direction={gameSectionVariant} onRestart={({ gameSize }) => history.push(`/play/${gameSize}`)} />
+      <GameSection width={gameSectionVariant} onRestart={({ gameSize }) => history.push(`/play/${gameSize}`)} />
     </Root>
   );
 }

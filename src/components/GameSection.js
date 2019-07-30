@@ -7,20 +7,20 @@ import { Typography } from '@material-ui/core';
 const BoardContainer = styled.div`
   font-size: 2.2em;
   display: flex;
-  justify-content: ${p => p.direction === 'row' ? 'initial' : 'center'};
+  justify-content: ${p => p.width === 'medium' ? 'initial' : 'center'};
 `;
 
 const Root = styled.div`
   display: flex;
-  flex-direction: ${p => p.direction === 'row' ? 'row' : 'column'};
+  flex-direction: ${p => p.width === 'medium' ? 'small' : 'column'};
 `;
 
 const StatsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: ${p => p.direction === 'row' ? '2em' : '0'};
-  margin-top: ${p => p.direction === 'row' ? '0' : '1em'};
-  align-items: ${p => p.direction === 'row' ? 'initial' : 'center'};
+  margin-left: ${p => p.width === 'medium' ? '2em' : '0'};
+  margin-top: ${p => p.width === 'medium' ? '0' : '1em'};
+  align-items: ${p => p.width === 'medium' ? 'initial' : 'center'};
 `;
 
 const Result = styled(Typography)`
@@ -38,12 +38,12 @@ const NextPlayer = styled(Typography)`
   }
 `;
 
-const GameSection = ({className, matrix, resultHistory, onCellClick, nextPlayer, direction}) => (
-  <Root className={className} direction={direction}>
+const GameSection = ({className, matrix, resultHistory, onCellClick, nextPlayer, width}) => (
+  <Root className={className} width={width}>
     <BoardContainer>
       <Board onCellClick={onCellClick} matrix={matrix} />
     </BoardContainer>
-    <StatsContainer direction={direction}>
+    <StatsContainer width={width}>
       <Result>X wins: {resultHistory.xWinCount}</Result>
       <Result>O wins: {resultHistory.oWinCount}</Result>
       <Result>Draws: {resultHistory.matrixFullCount}</Result>
@@ -62,7 +62,7 @@ GameSection.propTypes = {
   }).isRequired,
   onCellClick: PropTypes.func,
   nextPlayer: PropTypes.string.isRequired,
-  direction: PropTypes.oneOf(['row', 'col']),
+  width: PropTypes.oneOf(['small', 'medium']),
 }
 
 export default GameSection;
