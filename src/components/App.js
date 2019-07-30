@@ -3,6 +3,9 @@ import HomePage from './HomePage';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import GamePage from './GamePage';
 import { createGlobalStyle } from 'styled-components';
+import { createMuiTheme  } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/styles';
+
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -22,13 +25,25 @@ const GlobalStyle = createGlobalStyle`
   * {
       box-sizing: border-box;
   }
-`
+`;
+
+const theme = createMuiTheme({
+  overrides: {
+    MuiDialog: {
+      paper: {
+        margin: 0
+      },
+    }
+  }
+});
 
 const App = () => (
   <Router>
-    <GlobalStyle />
-    <Route path="/" exact component={HomePage} />
-    <Route path="/play/:gameSize/:firstPlayer" component={GamePage} />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Route path="/" exact component={HomePage} />
+      <Route path="/play/:gameSize/:firstPlayer" component={GamePage} />
+    </ThemeProvider>
   </Router>
 )
 
