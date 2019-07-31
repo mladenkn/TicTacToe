@@ -42,9 +42,9 @@ const App = () => (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Route path="/" exact component={HomePage} />
-      <Route path="/play/:gameSize/:firstPlayer" component={GamePage} />
+      <Route path="/play/:gameSize/:userPlayer" component={GamePage} />
     </ThemeProvider>
   </Router>
 )
-
+ 
 export default App;

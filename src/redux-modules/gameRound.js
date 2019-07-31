@@ -6,16 +6,16 @@ import { players, cellContent, roundStatus } from '../ticTacToeConstants';
 const PLAYER_MOVE = 'tic-tac-toe-round/PLAYER_MOVE';
 const INITIALIZE = 'tic-tac-toe-round/INITIALIZE';
 
-export const initialize = (gameSize, firstPlayer) => ({ type: INITIALIZE, payload: {gameSize, firstPlayer} });
+export const initialize = (gameSize, userPlayer) => ({ type: INITIALIZE, payload: {gameSize, userPlayer} });
 export const playerMove = (row, col) => ({ type: PLAYER_MOVE, payload: {row, col} });
 
 export const reducer = (state = null, action = {}) => {
   switch (action.type) {
 
     case INITIALIZE:
-      const {gameSize, firstPlayer} = action.payload;
+      const {gameSize, userPlayer} = action.payload;
       const matrix = createMatrix(gameSize, gameSize, cellContent.emptyCell);
-      return {matrix, gameSize, status: roundStatus.playing, nextPlayer: firstPlayer};
+      return {matrix, gameSize, status: roundStatus.playing, nextPlayer: userPlayer};
     
     case PLAYER_MOVE:
       const {row, col} = action.payload;

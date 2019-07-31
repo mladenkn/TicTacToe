@@ -4,15 +4,15 @@ import { isNil } from 'ramda';
 
 const NEW_ROUND = 'tic-tac-toe-rounds/NEW_ROUND';
 
-export const newRound = (gameSize, firstPlayer) => ({ type: NEW_ROUND, payload: {gameSize, firstPlayer} });
+export const newRound = (gameSize, userPlayer) => ({ type: NEW_ROUND, payload: {gameSize, userPlayer} });
 
 export const reducer = (state = {current: undefined, history: []}, action = {}) => {
 
   switch (action.type) {
 
     case NEW_ROUND: {
-      const { gameSize, firstPlayer } = action.payload
-      const current = singleRound.reducer(state.current, singleRound.initialize(gameSize, firstPlayer));
+      const { gameSize, userPlayer } = action.payload
+      const current = singleRound.reducer(state.current, singleRound.initialize(gameSize, userPlayer));
       return {...state, current};
     }
     

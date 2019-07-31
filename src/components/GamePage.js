@@ -53,8 +53,8 @@ const ConnectedGameSection = withGameWithAILogic('gameLogic')(GameSection);
 
 const GamePage = ({match, history}) => {  
   const gameSize = parseInt(match.params.gameSize);
-  const firstPlayer = match.params.firstPlayer.toUpperCase();
-  const initLogic = useGameInitLogic({gameSize, firstPlayer});
+  const userPlayer = match.params.userPlayer.toUpperCase();
+  const initLogic = useGameInitLogic({gameSize, userPlayer});
   useEffect(() => { initLogic.init() });
   const width = useMediaQuery('(max-width: 576px)') && gameSize > 2 ? 'small' : 'medium';
 
@@ -68,7 +68,7 @@ const GamePage = ({match, history}) => {
       </BackLink>
       <ConnectedGameSection 
         width={width} 
-        onRestart={({ gameSize, firstPlayer }) => history.push(`/play/${gameSize}/${firstPlayer}`)}
+        onRestart={({ gameSize, userPlayer }) => history.push(`/play/${gameSize}/${userPlayer}`)}
       />
     </Root>
   );

@@ -87,7 +87,7 @@ const GameSetupDialog = ({onAccept, onCancel, className}) => {
       <StyledBoard matrix={matrix} />
       <ActionsRow>
         <StyledCancelButton onClick={onCancel} color='secondary'>Cancel</StyledCancelButton>
-        <StyledOKButton onClick={() => onAccept({gameSize, firstPlayer: players.x})} color='primary'>OK</StyledOKButton>
+        <StyledOKButton onClick={() => onAccept({gameSize, userPlayer: players.x})} color='primary'>OK</StyledOKButton>
       </ActionsRow>
     </Root>
   );

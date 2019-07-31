@@ -27,7 +27,7 @@ const HomePage = ({ history }) =>
       <GlobalStyle />
       <StyledHomeSection
         width={homeSectionVariant}
-        navigateToGame={({ gameSize, firstPlayer }) => history.push(`/play/${gameSize}/${firstPlayer}`)}
+        navigateToGame={({ gameSize, userPlayer }) => history.push(`/play/${gameSize}/${userPlayer}`)}
       />
     </Fragment>
   );
