@@ -4,9 +4,9 @@ import { isNil } from 'ramda';
 import { players } from '../ticTacToeConstants';
 import { newRound } from '../redux-modules/gameRounds';
 
-export default ({gameSize, userPlayer}) => {  
+export default () => {  
   const dispatch = useDispatch();  
-  const init = () => {
+  const init = ({gameSize, userPlayer}) => {
     const aiPlayer = userPlayer === players.x ? players.o : players.x;
     dispatch(newRound(gameSize, userPlayer));
     dispatch(initializeGameAIPlayer(aiPlayer));

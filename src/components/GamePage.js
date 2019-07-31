@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { Typography, useMediaQuery } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ControllableGameSection from './ControllableGameSection';
@@ -51,25 +51,26 @@ const GlobalStyle = createGlobalStyle`
  
 const ConnectedGameSection = withGameWithAILogic('gameLogic')(GameSection);
 
-const GamePage = ({match, history}) => {  
+const GameSectionContainer = ({gameSize, userPlayer}) => {
+  const initLogic = useGameInitLogic();
+  useEffect(() => { initLogic.init({gameSize, userPlayer}) }, []);
+  const width = useMediaQuery('(max-width: 576px)') && gameSize > 2 ? 'small' : 'medium';
+  return initLogic.inited ?
+    <ConnectedGameSection width={width} onRestart={initLogic.init}/> :
+    <Fragment />
+}
+
+const GamePage = ({match}) => {  
   const gameSize = parseInt(match.params.gameSize);
   const userPlayer = match.params.userPlayer.toUpperCase();
-  const initLogic = useGameInitLogic({gameSize, userPlayer});
-  useEffect(() => { initLogic.init() });
-  const width = useMediaQuery('(max-width: 576px)') && gameSize > 2 ? 'small' : 'medium';
-
   return ( 
-    initLogic.inited &&
     <Root>
       <GlobalStyle />
       <BackLink underline='none' to={homeUrl}>
         <ArrowBackIcon />
         <BackLinkText>Back to Home</BackLinkText>
       </BackLink>
-      <ConnectedGameSection 
-        width={width} 
-        onRestart={({ gameSize, userPlayer }) => history.push(`/play/${gameSize}/${userPlayer}`)}
-      />
+      <GameSectionContainer gameSize={gameSize} userPlayer={userPlayer} />
     </Root>
   );
 }
